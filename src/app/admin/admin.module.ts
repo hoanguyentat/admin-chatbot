@@ -22,7 +22,7 @@ import { ShopManagementModule } from './shop-management/shop-management.module';
     SharedModule,
     MatToolbarModule,
     MatButtonModule,
-    BrowserAnimationsModule,
+    // BrowserAnimationsModule,
     ShopManagementModule
   ],
   declarations: [

@@ -10,7 +10,8 @@ import { MatButtonModule } from '@angular/material/button';
     CommonModule,
     ShopManagementRoutingModule,
     MatToolbarModule,
-    MatButtonModule
+    MatButtonModule,
+    ShopManagementRoutingModule
   ],
   declarations: [ShopManagementComponent]
 })

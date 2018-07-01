@@ -8,24 +8,24 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AdminModule } from './admin/admin.module';
-import { MatButtonModule } from '@angular/material/button';
-import { MatToolbarModule } from '@angular/material/toolbar';
+import { CommonModule } from '@angular/common';
 
 const appRoutes: Routes = [
-  { path: '', redirectTo: '/admin', pathMatch: 'full' },
+  // { path: '', redirectTo: 'admin', pathMatch: 'full' },
   { path: 'admin', loadChildren: './admin/admin.module#AdminModule' },
-  { path: '**', redirectTo: '/admin' }
+  { path: '**', redirectTo: 'admin' }
 ];
 
 @NgModule({
   imports: [
+    CommonModule,
     BrowserModule,
     FormsModule,
     HttpClientModule,
     AdminModule,
     RouterModule.forRoot(appRoutes),
     NgbModule.forRoot(),
-    NoopAnimationsModule,
+    // NoopAnimationsModule,
   ],
   declarations: [
     AppComponent

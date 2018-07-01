@@ -5,13 +5,13 @@ import { NgModule } from "@angular/core";
 
 const adminRoutes: Routes = [
     {
-        path: 'admin',
+        path: '',
         component: AdminComponent,
         children: [
             { path: 'shop-management', loadChildren: './shop-management/shop-management.module#ShopManagementModule' },
-            { path: '', redirectTo: 'report', pathMatch: 'prefix' },
+            // { path: '', redirectTo: 'report', pathMatch: 'prefix' },
             { path: 'report', component: ReportColumnChartComponent },
-            { path: '**', redirectTo: '/report' }
+            // { path: '**', redirectTo: '/report' }
         ]
     }
 ];
