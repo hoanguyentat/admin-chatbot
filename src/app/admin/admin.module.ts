@@ -11,28 +11,19 @@ import { MatButtonModule } from '@angular/material/button';
 
 import { AdminComponent } from './admin.component';
 import { ReportColumnChartComponent } from './components/report-column-chart/report-column-chart.component';
-
-const adminRoutes: Routes = [
-  {
-    path: 'admin',
-    component: AdminComponent,
-    children: [
-      { path: '', redirectTo: 'report', pathMatch: 'prefix' },
-      { path: 'report', component: ReportColumnChartComponent },
-      { path: '**', redirectTo: '/report' }
-    ]
-  }
-];
+import { AdminRoutingModule } from './admin-routing.module';
+import { ShopManagementModule } from './shop-management/shop-management.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    RouterModule.forChild(adminRoutes),
+    AdminRoutingModule,
     SharedModule,
     MatToolbarModule,
     MatButtonModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ShopManagementModule
   ],
   declarations: [
     AdminComponent,
