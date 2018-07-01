@@ -8,7 +8,7 @@ const route: Routes = [{
     path: '',
     component: OrderManagementComponent,
     children: [{
-        path: '', component: OrderListComponent,
+        path: '', redirectTo: 'list',
     }, {
         path: 'list', component: OrderListComponent,
     }, {

@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AdminModule } from './admin/admin.module';
 import { CommonModule } from '@angular/common';
+import { SharedModule } from './shared/shared.module';
 
 const appRoutes: Routes = [
   // { path: '', redirectTo: 'admin', pathMatch: 'full' },
@@ -18,14 +19,10 @@ const appRoutes: Routes = [
 
 @NgModule({
   imports: [
-    CommonModule,
     BrowserModule,
-    FormsModule,
     HttpClientModule,
-    AdminModule,
     RouterModule.forRoot(appRoutes),
-    NgbModule.forRoot(),
-    // NoopAnimationsModule,
+    SharedModule.forRoot()
   ],
   declarations: [
     AppComponent

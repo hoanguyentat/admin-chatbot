@@ -4,14 +4,13 @@ import { ShopManagementComponent } from './shop-management.component';
 import { ShopManagementRoutingModule } from './shop-management-routing.module';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
+import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     ShopManagementRoutingModule,
-    MatToolbarModule,
-    MatButtonModule,
-    ShopManagementRoutingModule
+    SharedModule
   ],
   declarations: [ShopManagementComponent]
 })

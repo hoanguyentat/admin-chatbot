@@ -12,18 +12,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { AdminComponent } from './admin.component';
 import { ReportColumnChartComponent } from './components/report-column-chart/report-column-chart.component';
 import { AdminRoutingModule } from './admin-routing.module';
-import { ShopManagementModule } from './shop-management/shop-management.module';
 
 @NgModule({
   imports: [
-    CommonModule,
-    FormsModule,
     AdminRoutingModule,
     SharedModule,
-    MatToolbarModule,
-    MatButtonModule,
-    // BrowserAnimationsModule,
-    ShopManagementModule
   ],
   declarations: [
     AdminComponent,
