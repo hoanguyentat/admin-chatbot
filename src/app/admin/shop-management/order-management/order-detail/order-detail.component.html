@@ -1,40 +1,40 @@
 <mat-card>
-  	<mat-card-title>Danh sách đơn hàng</mat-card-title>
-		<mat-card-content>
-			<div class="container">
-			    <div class="row info">
-			      <div class="col-xl-6">
-			        <b>Tên khách hàng: </b>
-			        <span>{{order_detail.customer_name}}</span>
-			      </div>
-			      <div class="col-xl-6">
-			        <b>Địa chỉ khách hàng: </b>
-			        <span>{{order_detail.customer_address}}</span>
-			      </div>
-			      <div class="col-xl-6">
-			        <b>Số sản phẩm: </b>
-			        <span>{{order_detail.total_products}}</span>
-			      </div>
-			      <div class="col-xl-6">
-			        <b>Giá: </b>
-			        <span>{{order_detail.total_price}} {{order_detail.price_unit}}</span>
-			      </div>
-			      <div class="col-xl-6">
-			        <b>Ngày tạo: </b>
-			        <span>{{order_detail.created_at | date :'dd/MM/yyy'}}</span>
-			      </div>
-			      <div class="col-xl-6">
-			        <b>Lần sửa cuối: </b>
-			        <span>{{order_detail.updated_at | date :'dd/MM/yyy'}}</span>
-			      </div>
-			    </div>
+  	<mat-card-title style="text-align: center;">Thông tin đơn hàng</mat-card-title>
+	<mat-card-content>
+		<div class="container">
+		    <div class="row info">
+		      <div class="col-xl-6">
+		        <b>Tên khách hàng: </b>
+		        <span>{{order_detail.customer_name}}</span>
+		      </div>
+		      <div class="col-xl-6">
+		        <b>Địa chỉ khách hàng: </b>
+		        <span>{{order_detail.customer_address}}</span>
+		      </div>
+		      <div class="col-xl-6">
+		        <b>Số sản phẩm: </b>
+		        <span>{{order_detail.total_products}}</span>
+		      </div>
+		      <div class="col-xl-6">
+		        <b>Giá: </b>
+		        <span>{{order_detail.total_price}} {{order_detail.price_unit}}</span>
+		      </div>
+		      <div class="col-xl-6">
+		        <b>Ngày tạo: </b>
+		        <span>{{order_detail.created_at | date :'dd/MM/yyy'}}</span>
+		      </div>
+		      <div class="col-xl-6">
+		        <b>Lần sửa cuối: </b>
+		        <span>{{order_detail.updated_at | date :'dd/MM/yyy'}}</span>
+		      </div>
 		    </div>
-		    <div class="container">
-			    <div class="row info">
-			      <div class="col-xl-12"><b>Chi tiết đơn hàng: </b></div>
-			      <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)">
-			      </ng2-smart-table>
-			    </div>
+	    </div>
+	    <div class="container">
+		    <div class="row info">
+		      <div class="col-xl-12"><b>Chi tiết đơn hàng: </b></div>
+		      <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)">
+		      </ng2-smart-table>
 		    </div>
-		</mat-card-content>
+	    </div>
+	</mat-card-content>
 </mat-card>
