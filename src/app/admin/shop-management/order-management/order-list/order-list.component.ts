@@ -99,6 +99,9 @@ export class OrderListComponent implements OnInit {
       saveButtonContent: '<i class="fa fa-checkmark"></i>',
       cancelButtonContent: '<i class="fa fa-close"></i>',
     },
+    attr: {
+        class: 'table table-bordered'
+      },
     delete: {
       deleteButtonContent: '<i class="fa fa-trash"></i>',
       confirmDelete: true,
@@ -125,7 +128,7 @@ export class OrderListComponent implements OnInit {
         type: 'string'
       },
       updated_at: {
-        title: 'Cập nhập',
+        title: 'Cập nhật',
         type: 'number'
       },
       created_at: {
@@ -144,6 +147,7 @@ export class OrderListComponent implements OnInit {
   }
 
   onDeleteConfirm(event): void {
+    console.log("clicked delete event");
     if (window.confirm('Are you sure you want to delete?')) {
       event.confirm.resolve();
     } else {
@@ -152,7 +156,8 @@ export class OrderListComponent implements OnInit {
   }
 
   onView(event): void {
-    this.router.navigate(['pages/order-management/order-detail/', event.data.id]);
+    console.log("This is clicked!");
+    this.router.navigate(['admin/shop-management/order-management/detail/', event.data.id]);
   }
 
 }
