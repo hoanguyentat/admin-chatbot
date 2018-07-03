@@ -156,8 +156,8 @@ export class OrderListComponent implements OnInit {
   }
 
   onView(event): void {
-    console.log("This is clicked!");
-    this.router.navigate(['admin/shop-management/order-management/detail/', event.data.id]);
+    // console.log("This is clicked!");
+    this.router.navigate(['admin/shop-management/order-management', event.data.id]);
   }
 
 }

@@ -1387,7 +1387,7 @@ export class ProductListComponent implements OnInit {
 
   onView(event): void {
     console.log("This is clicked!");
-    this.router.navigate(['admin/shop-management/product-management/detail/', event.data.id]);
+    this.router.navigate(['admin/shop-management/product-management', event.data.id]);
   }
 
 
