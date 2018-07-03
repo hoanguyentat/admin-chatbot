@@ -1,5 +1,5 @@
-<mat-card>
-  <mat-card-title style="text-align: center;">Thông tin đơn hàng</mat-card-title>
+<mat-card color="primary">
+  <mat-card-title style="text-align: center;">Thông tin khách hàng</mat-card-title>
 <mat-card-content>
   <div class="container">
       <div class="row info">
@@ -31,7 +31,7 @@
     </div>
     <div class="container">
       <div class="row info">
-        <div class="col-xl-12"><b>Chi tiết đơn hàng: </b></div>
+        <div class="col-xl-12"><b>Chi tiết khách hàng: </b></div>
         <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)">
         </ng2-smart-table>
       </div>
