@@ -11,11 +11,9 @@ const route: Routes = [{
   component: ProductManagementComponent,
   children: [
     {
-      path: 'list', component: ProductListComponent
-    },     {
-      path: '', redirectTo: 'list'
+      path: '', component: ProductListComponent
     }, {
-      path: 'detail/:id', component: ProductDetailComponent
+      path: ':id', component: ProductDetailComponent
     }
   ]
 }]

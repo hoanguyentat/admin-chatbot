@@ -6,16 +6,26 @@ import { Routes, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-// import { MatToolbarModule } from '@angular/material/toolbar';
-// import { MatButtonModule } from '@angular/material/button';
-
 import { AdminComponent } from './admin.component';
 import { ReportColumnChartComponent } from './components/report-column-chart/report-column-chart.component';
-import { AdminRoutingModule } from './admin-routing.module';
+
+const adminRoutes: Routes = [
+  {
+      path: '',
+      component: AdminComponent,
+      children: [
+          { path: 'shop-management', loadChildren: './shop-management/shop-management.module#ShopManagementModule' },
+          // { path: '', redirectTo: 'report', pathMatch: 'prefix' },
+          { path: 'report', component: ReportColumnChartComponent },
+          // { path: '**', redirectTo: '/report' }
+      ]
+  }
+];
+
 
 @NgModule({
   imports: [
-    AdminRoutingModule,
+    RouterModule.forChild(adminRoutes),
     SharedModule,
   ],
   declarations: [
