@@ -4,85 +4,37 @@ import { Router } from '@angular/router';
 
 
 const MOCK_DATA = {
-  'paging': {
-    'page': 1,
-    'total': 200,
-    'page_size': 2
-  },
-  'data': [
-    {
-      'id': '653678611405325',
-      'user_backend_id': '653678611405322',
-      'customer_name': 'Phuong TH',
-      'customer_address': 'Phương Mai, Hà Nội',
-      'total_products': 2,
-      'total_price': 1000000,
-      'price_unit': 'VND',
-      'updated_at': 1529912852,
-      'created_at': 1529912852,
-      'user_backend_name': 'Quang LH'
+    "paging": {
+      "page": 1,
+      "total": 200,
+      "page_size": 2
     },
-    {
-      'id': '653678611405321',
-      'user_backend_id': '653678611405324',
-      'customer_name': 'Phuong TH',
-      'customer_address': 'Phương Mai, Hà Nội',
-      'total_products': 2,
-      'total_price': 1000000,
-      'price_unit': 'VND',
-      'updated_at': 1529912852,
-      'created_at': 1529912852,
-      'user_backend_name': 'Quang LH'
-    },
-    {
-      'id': '653678611405321',
-      'user_backend_id': '653678611405324',
-      'customer_name': 'Phuong TH',
-      'customer_address': 'Phương Mai, Hà Nội',
-      'total_products': 2,
-      'total_price': 1000000,
-      'price_unit': 'VND',
-      'updated_at': 1529912852,
-      'created_at': 1529912852,
-      'user_backend_name': 'Quang LH'
-    },
-    {
-      'id': '653678611405321',
-      'user_backend_id': '653678611405324',
-      'customer_name': 'Phuong TH',
-      'customer_address': 'Phương Mai, Hà Nội',
-      'total_products': 2,
-      'total_price': 1000000,
-      'price_unit': 'VND',
-      'updated_at': 1529912852,
-      'created_at': 1529912852,
-      'user_backend_name': 'Quang LH'
-    },
-    {
-      'id': '653678611405321',
-      'user_backend_id': '653678611405324',
-      'customer_name': 'Phuong TH',
-      'customer_address': 'Phương Mai, Hà Nội',
-      'total_products': 2,
-      'total_price': 1000000,
-      'price_unit': 'VND',
-      'updated_at': 1529912852,
-      'created_at': 1529912852,
-      'user_backend_name': 'Quang LH'
-    },
-    {
-      'id': '653678611405321',
-      'user_backend_id': '653678611405324',
-      'customer_name': 'Phuong TH',
-      'customer_address': 'Phương Mai, Hà Nội',
-      'total_products': 2,
-      'total_price': 1000000,
-      'price_unit': 'VND',
-      'updated_at': 1529912852,
-      'created_at': 1529912852,
-      'user_backend_name': 'Quang LH'
-    }
-  ]
+    "data": [
+      {
+        "id": "653678611405322",
+        "username": "Phuong NM",
+        "fullname": "Phuong Nguyen Minh",
+        "sex": "male",
+        "email": "phuongnm@bkav.com",
+        "phone": "0191512355",
+        "birth_day": "2018-06-01",
+        "role": "ADMIN",
+        "created_at": 1529913941,
+        "updated_at": 1529913941
+      },
+      {
+        "id": "653678611405322",
+        "username": "KhiemDH",
+        "fullname": "Doan Hoa Khiem",
+        "sex": "male",
+        "email": "khiemdh@bkav.com",
+        "phone": "0191512355",
+        "birth_day": "2018-06-01",
+        "role": "STAFF",
+        "created_at": 1529913941,
+        "updated_at": 1529913941
+      }
+    ]
 };
 
 @Component({
@@ -110,31 +62,35 @@ export class UserListComponent implements OnInit {
       confirmDelete: true,
     },
     columns: {
-      customer_name: {
-        title: 'Tên khách hàng',
+      fullname: {
+        title: 'Tên tài khoản',
         type: 'string'
       },
-      customer_address: {
-        title: 'Địa chỉ',
+      sex: {
+        title: 'Giới tính',
         type: 'string'
       },
-      total_products: {
-        title: 'Số sản phẩm',
+      email: {
+        title: 'Email',
+        type: 'string'
+      },
+      phone: {
+        title: 'Số điện thoại',
         type: 'number'
       },
-      total_price: {
-        title: 'Tổng giá',
-        type: 'number'
-      },
-      price_unit: {
-        title: 'Mệnh giá',
+      birth_day: {
+        title: 'Năm sinh',
         type: 'string'
       },
-      updated_at: {
+      role: {
+        title: 'Role',
+        type: 'string'
+      },
+      created_at: {
         title: 'Cập nhật',
         type: 'number'
       },
-      created_at: {
+      updated_at: {
         title: 'Tạo',
         type: 'number'
       },
