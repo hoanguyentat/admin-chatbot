@@ -115,4 +115,8 @@ export class OrderDetailComponent implements OnInit {
   ngOnInit() {
   }
 
+  onDeleteConfirm(): void{
+
+  }
+
 }
