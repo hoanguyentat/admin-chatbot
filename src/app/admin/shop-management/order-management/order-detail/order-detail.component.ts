@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { OrderDetail } from '../../../../shared/models/order-detail';
 import { LocalDataSource } from 'ng2-smart-table';
+import { OrderDetail } from '../../../../core/models/order-detail';
 
 const MOCK_DATA = {
   'id': '653678611405322',
