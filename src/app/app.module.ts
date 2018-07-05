@@ -4,6 +4,9 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
+import { CoreModule } from './core/core.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpTokenInterceptor } from './core/interceptors/http-token-interceptor';
 
 const appRoutes: Routes = [
   // { path: '', redirectTo: 'admin', pathMatch: 'full' },
@@ -14,7 +17,8 @@ const appRoutes: Routes = [
 @NgModule({
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes, { enableTracing: true }),
+    CoreModule,
+    RouterModule.forRoot(appRoutes, { enableTracing: false }),
     SharedModule.forRoot()
   ],
   declarations: [

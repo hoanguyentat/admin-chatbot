@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { LocalDataSource } from 'ng2-smart-table';
+import { LocalDataSource, ServerDataSource } from 'ng2-smart-table';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../../../environments/environment';
 
 const MOCK_DATA = {
   'paging': {
@@ -100,8 +102,8 @@ export class OrderListComponent implements OnInit {
       cancelButtonContent: '<i class="fa fa-close"></i>',
     },
     attr: {
-        class: 'table table-bordered'
-      },
+      class: 'table table-bordered'
+    },
     delete: {
       deleteButtonContent: '<i class="fa fa-trash"></i>',
       confirmDelete: true,
@@ -138,12 +140,19 @@ export class OrderListComponent implements OnInit {
     }
   };
 
-  source: LocalDataSource = new LocalDataSource();
+  response: any;
 
-  constructor(private router: Router) { }
+  source: ServerDataSource;
+
+  constructor(private router: Router, private http: HttpClient) { }
 
   ngOnInit() {
-    this.source.load(MOCK_DATA.data);
+    // this.source = new ServerDataSource(this.http, {
+    //   endPoint: environment.domain + '/api/v1/orders/',
+    //   pagerPageKey: 'page',
+    //   pagerLimitKey: 'page_size',
+    //   totalKey: 'total'
+    // });
   }
 
   onDeleteConfirm(event): void {
