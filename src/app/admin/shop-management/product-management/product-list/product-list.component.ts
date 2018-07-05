@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from '../../../../shared/models/product';
 import { LocalDataSource } from 'ng2-smart-table';
 import { Router } from '@angular/router';
+import { Product } from '../../../../core/models/product';
 
 const MOCK_DATA: Product[] = [
   {
