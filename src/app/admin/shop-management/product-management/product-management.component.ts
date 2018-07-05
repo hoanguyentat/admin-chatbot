@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-product-management',
-  template: '<router-outlet></router-outlet>'
+  templateUrl: './product-management.component.html'
 })
 export class ProductManagementComponent implements OnInit {
 
