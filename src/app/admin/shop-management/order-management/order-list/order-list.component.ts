@@ -147,7 +147,7 @@ export class OrderListComponent implements OnInit {
   }
 
   onDeleteConfirm(event): void {
-    console.log("clicked delete event");
+    console.log('clicked delete event');
     if (window.confirm('Are you sure you want to delete?')) {
       event.confirm.resolve();
     } else {

@@ -23,9 +23,9 @@ const MAT_MODULES = [
   MatToolbarModule,
   MatButtonModule,
   MatCardModule
-]
+];
 
-const COMPONENT = []
+const COMPONENT = [];
 
 @NgModule({
   declarations: [...COMPONENT],
@@ -37,8 +37,8 @@ export class SharedModule {
     return <ModuleWithProviders>{
       ngModule: SharedModule,
       providers: [
-        SharedService, 
-        SharedUiService, 
+        SharedService,
+        SharedUiService,
         NgbTooltipConfig,
       ]
     };

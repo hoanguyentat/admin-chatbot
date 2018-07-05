@@ -8,7 +8,7 @@ import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [{
-  path: '', 
+  path: '',
   component: ShopManagementComponent,
   children: [{
       path: 'user-management',
@@ -20,7 +20,7 @@ const routes: Routes = [{
       path: 'product-management',
       loadChildren: './product-management/product-management.module#ProductManagementModule',
   }]
-}]
+}];
 
 @NgModule({
   imports: [
