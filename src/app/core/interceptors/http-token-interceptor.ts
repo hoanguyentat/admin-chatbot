@@ -1,6 +1,7 @@
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class HttpTokenInterceptor implements HttpInterceptor {
@@ -8,7 +9,7 @@ export class HttpTokenInterceptor implements HttpInterceptor {
         const headersConfig = {
           'Content-Type': 'application/json',
           'Accept': 'application/json',
-          'Authorization': 'Token 1a8e7c71678bd846f80afb9cbe7a79b6f2755baa'
+          'Authorization': 'Token ' + environment.token
         };
         const request = req.clone({ setHeaders: headersConfig });
         return next.handle(request);
