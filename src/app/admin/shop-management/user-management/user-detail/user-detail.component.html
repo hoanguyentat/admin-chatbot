@@ -1,0 +1,44 @@
+<mat-card color="primary">
+  <mat-card-title style="text-align: center;">Thông tin khách hàng</mat-card-title>
+<mat-card-content>
+  <div class="container">
+      <div class="row info">
+        <div class="col-xl-6">
+          <b>Tên khách hàng: </b>
+          <span>{{user_detail.fullname}}</span>
+        </div>
+        <div class="col-xl-6">
+          <b>Giới tính: </b>
+          <span>{{user_detail.sex}}</span>
+        </div>
+        <div class="col-xl-6">
+          <b>email: </b>
+          <span>{{user_detail.email}}</span>
+        </div>
+        <div class="col-xl-6">
+          <b>Số điện thoại: </b>
+          <span>{{user_detail.phone}}</span>
+        </div>
+        <div class="col-xl-6">
+          <b>Ngày sinh: </b>
+          <span>{{user_detail.birth_day}}</span>
+        </div>
+        <div class="col-xl-6">
+          <b>Role: </b>
+          <span>{{user_detail.role}}</span>
+        </div>
+        <div class="col-xl-6">
+          <b>Ngày tạo: </b>
+          <span>{{user_detail.created_at | date :'dd/MM/yyy'}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row info">
+        <div class="col-xl-12"><b>Chi tiết khách hàng: </b></div>
+        <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)">
+        </ng2-smart-table>
+      </div>
+    </div>
+</mat-card-content>
+</mat-card>

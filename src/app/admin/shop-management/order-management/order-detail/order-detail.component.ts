@@ -62,5 +62,8 @@ export class OrderDetailComponent implements OnChanges {
     // TODO
   }
 
+  onDeleteConfirm(): void {
+
+  }
 
 }
