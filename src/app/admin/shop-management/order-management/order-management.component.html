@@ -6,11 +6,11 @@
                 <button mat-raised-button color="primary" class="pull-right">Thêm mới</button>
             </mat-card-title>
             <mat-card-content>
-                <app-order-list></app-order-list>
+                <app-order-list (selectOrder)="selectedOrder = $event"></app-order-list>
             </mat-card-content>
         </mat-card>
     </div>
-    <div class="col-md-5">
+    <div class="col-md-5" *ngIf="selectedOrder">
         <mat-card>
             <mat-card-title><span>Chi tiết đơn hàng</span><button mat-raised-button color="primary" class="pull-right">Chỉnh sửa</button></mat-card-title>
             <mat-card-content>

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
 import { LocalDataSource, ServerDataSource } from 'ng2-smart-table';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
@@ -21,11 +21,12 @@ export class OrderListComponent implements OnInit {
   public data: Order[] = [];
   public displayedColumns: string[]
     = ['id', 'customer_name', 'customer_address', 'total_product', 'total_price', 'price_unit', 'updated_at', 'created_at'];
+  @Output()
+  public selectOrder = new EventEmitter<Order>();
 
   constructor(private orderService: OrderService) { }
 
   ngOnInit() {
-
     this.paginator.pageIndex = 0;
     this.paginator.page.pipe(
       startWith({}),
@@ -43,6 +44,10 @@ export class OrderListComponent implements OnInit {
         return of([]);
       }),
     ).subscribe(data => this.data = data);
+  }
+
+  public onSelectedRow(order: Order) {
+    this.selectOrder.emit(order);
   }
 
 }
