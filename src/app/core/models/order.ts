@@ -6,7 +6,7 @@ export interface Order {
     total_products: number;
     total_price: number;
     price_unit: string;
-    updated_at: Date;
-    created_at: Date;
+    updated_at: number;
+    created_at: number;
     user_backend_name: string;
 }

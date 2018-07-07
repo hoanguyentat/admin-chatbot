@@ -1,90 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { LocalDataSource, ServerDataSource } from 'ng2-smart-table';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../../environments/environment';
-
-const MOCK_DATA = {
-  'paging': {
-    'page': 1,
-    'total': 200,
-    'page_size': 2
-  },
-  'data': [
-    {
-      'id': '653678611405325',
-      'user_backend_id': '653678611405322',
-      'customer_name': 'Phuong TH',
-      'customer_address': 'Phương Mai, Hà Nội',
-      'total_products': 2,
-      'total_price': 1000000,
-      'price_unit': 'VND',
-      'updated_at': 1529912852,
-      'created_at': 1529912852,
-      'user_backend_name': 'Quang LH'
-    },
-    {
-      'id': '653678611405321',
-      'user_backend_id': '653678611405324',
-      'customer_name': 'Phuong TH',
-      'customer_address': 'Phương Mai, Hà Nội',
-      'total_products': 2,
-      'total_price': 1000000,
-      'price_unit': 'VND',
-      'updated_at': 1529912852,
-      'created_at': 1529912852,
-      'user_backend_name': 'Quang LH'
-    },
-    {
-      'id': '653678611405321',
-      'user_backend_id': '653678611405324',
-      'customer_name': 'Phuong TH',
-      'customer_address': 'Phương Mai, Hà Nội',
-      'total_products': 2,
-      'total_price': 1000000,
-      'price_unit': 'VND',
-      'updated_at': 1529912852,
-      'created_at': 1529912852,
-      'user_backend_name': 'Quang LH'
-    },
-    {
-      'id': '653678611405321',
-      'user_backend_id': '653678611405324',
-      'customer_name': 'Phuong TH',
-      'customer_address': 'Phương Mai, Hà Nội',
-      'total_products': 2,
-      'total_price': 1000000,
-      'price_unit': 'VND',
-      'updated_at': 1529912852,
-      'created_at': 1529912852,
-      'user_backend_name': 'Quang LH'
-    },
-    {
-      'id': '653678611405321',
-      'user_backend_id': '653678611405324',
-      'customer_name': 'Phuong TH',
-      'customer_address': 'Phương Mai, Hà Nội',
-      'total_products': 2,
-      'total_price': 1000000,
-      'price_unit': 'VND',
-      'updated_at': 1529912852,
-      'created_at': 1529912852,
-      'user_backend_name': 'Quang LH'
-    },
-    {
-      'id': '653678611405321',
-      'user_backend_id': '653678611405324',
-      'customer_name': 'Phuong TH',
-      'customer_address': 'Phương Mai, Hà Nội',
-      'total_products': 2,
-      'total_price': 1000000,
-      'price_unit': 'VND',
-      'updated_at': 1529912852,
-      'created_at': 1529912852,
-      'user_backend_name': 'Quang LH'
-    }
-  ]
-};
+import { MatPaginator } from '@angular/material';
+import { Order } from '../../../../core/models/order';
+import { OrderService } from '../../../../core/services/order.service';
+import { switchMap, map, catchError, startWith, tap } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-order-list',
@@ -93,9 +16,33 @@ const MOCK_DATA = {
 })
 export class OrderListComponent implements OnInit {
 
-  constructor(private router: Router, private http: HttpClient) { }
+  @ViewChild(MatPaginator)
+  public paginator: MatPaginator;
+  public data: Order[] = [];
+  public displayedColumns: string[]
+    = ['id', 'customer_name', 'customer_address', 'total_product', 'total_price', 'price_unit', 'updated_at', 'created_at'];
+
+  constructor(private orderService: OrderService) { }
 
   ngOnInit() {
+
+    this.paginator.pageIndex = 0;
+    this.paginator.page.pipe(
+      startWith({}),
+      switchMap(() => {
+        return this.orderService.getOrders(this.paginator.pageIndex + 1, this.paginator.pageSize);
+      }),
+      map(resp => {
+        console.log(resp);
+        this.paginator.pageIndex = resp.paging.page - 1;
+        this.paginator.pageSize = resp.paging.page_size;
+        this.paginator.length = resp.paging.total;
+        return resp.data;
+      }),
+      catchError(() => {
+        return of([]);
+      }),
+    ).subscribe(data => this.data = data);
   }
 
 }

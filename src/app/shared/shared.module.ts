@@ -13,7 +13,9 @@ import {
   MatToolbarModule,
   MatIconModule,
   MatCardModule,
-  MatGridListModule
+  MatGridListModule,
+  MatTableModule,
+  MatPaginatorModule
 } from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -30,7 +32,9 @@ const MAT_MODULES = [
   MatCardModule,
   MatMenuModule,
   MatIconModule,
-  MatGridListModule
+  MatGridListModule,
+  MatTableModule,
+  MatPaginatorModule
 ];
 
 const COMPONENT = [];
