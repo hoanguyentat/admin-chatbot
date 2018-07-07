@@ -1,10 +1,16 @@
 export interface ProductInOrderDetail {
-    colors: string[];
-    quantity: number;
-    description: string;
-    id: string;
+    id: number;
+    updated_at: number;
+    created_at: number;
     name: string;
+    brand: string;
+    url: string;
     price: number;
     price_unit: string;
-    sizes: number[];
+    count: number;
+    description: string;
+    attributes: {
+        color: string;
+        size: string;
+    };
 }

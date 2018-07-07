@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
 import { OrderDetail } from '../../../../core/models/order-detail';
 
@@ -50,14 +50,17 @@ const MOCK_DATA = {
   templateUrl: './order-detail.component.html',
   styleUrls: ['./order-detail.component.scss']
 })
-export class OrderDetailComponent implements OnInit {
+export class OrderDetailComponent implements OnChanges {
 
-  order_detail: OrderDetail = MOCK_DATA;
+  @Input()
+  public orderDetail: OrderDetail;
 
   constructor() {
   }
 
-  ngOnInit() {
+  ngOnChanges(changes: SimpleChanges) {
+    // TODO
   }
+
 
 }

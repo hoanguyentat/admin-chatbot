@@ -14,7 +14,7 @@
         <mat-card>
             <mat-card-title><span>Chi tiết đơn hàng</span><button mat-raised-button color="primary" class="pull-right">Chỉnh sửa</button></mat-card-title>
             <mat-card-content>
-                <app-order-detail></app-order-detail>
+                <app-order-detail [orderDetail]="selectedOrder"></app-order-detail>
             </mat-card-content>
         </mat-card>
     </div>
