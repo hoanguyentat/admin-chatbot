@@ -1,6 +1,3 @@
-
-import { ProductInOrderDetail } from './product-in-order-detail';
-
 export interface UserDetail {
     id: String;
     username: String;

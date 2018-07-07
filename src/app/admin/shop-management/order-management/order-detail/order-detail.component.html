@@ -1,40 +1,81 @@
-<mat-card>
-  	<mat-card-title style="text-align: center;">Thông tin đơn hàng</mat-card-title>
-	<mat-card-content>
-		<div class="container">
-		    <div class="row info">
-		      <div class="col-xl-6">
-		        <b>Tên khách hàng: </b>
-		        <span>{{order_detail.customer_name}}</span>
-		      </div>
-		      <div class="col-xl-6">
-		        <b>Địa chỉ khách hàng: </b>
-		        <span>{{order_detail.customer_address}}</span>
-		      </div>
-		      <div class="col-xl-6">
-		        <b>Số sản phẩm: </b>
-		        <span>{{order_detail.total_products}}</span>
-		      </div>
-		      <div class="col-xl-6">
-		        <b>Giá: </b>
-		        <span>{{order_detail.total_price}} {{order_detail.price_unit}}</span>
-		      </div>
-		      <div class="col-xl-6">
-		        <b>Ngày tạo: </b>
-		        <span>{{order_detail.created_at | date :'dd/MM/yyy'}}</span>
-		      </div>
-		      <div class="col-xl-6">
-		        <b>Lần sửa cuối: </b>
-		        <span>{{order_detail.updated_at | date :'dd/MM/yyy'}}</span>
-		      </div>
-		    </div>
-	    </div>
-	    <div class="container">
-		    <div class="row info">
-		      <div class="col-xl-12"><b>Chi tiết đơn hàng: </b></div>
-		      <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)">
-		      </ng2-smart-table>
-		    </div>
-	    </div>
-	</mat-card-content>
-</mat-card>
+<div class="container">
+  <div class="row info">
+    <div class="col-xl-6">
+      <b>Tên khách hàng: </b>
+      <span>{{orderDetail.customer_name}}</span>
+    </div>
+    <div class="col-xl-6">
+      <b>Địa chỉ khách hàng: </b>
+      <span>{{orderDetail.customer_address}}</span>
+    </div>
+    <div class="col-xl-6">
+      <b>Số sản phẩm: </b>
+      <span>{{orderDetail.total_product}}</span>
+    </div>
+    <!-- <div class="col-xl-6">
+      <b>Giá: </b>
+      <span>{{orderDetail.total_price}} {{orderDetail.price_unit}}</span>
+    </div> -->
+    <div class="col-xl-6">
+      <b>Ngày tạo: </b>
+      <span>{{orderDetail.created_at * 1000 | date :'dd/MM/yyy'}}</span>
+    </div>
+    <div class="col-xl-6">
+      <b>Lần sửa cuối: </b>
+      <span>{{orderDetail.updated_at * 1000 | date :'dd/MM/yyy'}}</span>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row info">
+    <div class="col-xl-12">
+      <b>Chi tiết đơn hàng: </b>
+    </div>
+    <table mat-table [dataSource]="orderDetail.products">
+      <ng-container matColumnDef='description'>
+        <th mat-header-cell *matHeaderCellDef>Description</th>
+        <td mat-cell *matCellDef="let ele">
+          <div class="name">
+            <b>{{ele.name}}</b>
+          </div>
+          <div class="brand">
+            <i>{{ele.brand || ''}}</i>
+          </div>
+				</td>
+				<td mat-footer-cell *matFooterCellDef></td>
+      </ng-container>
+      <ng-container matColumnDef='count'>
+        <th mat-header-cell *matHeaderCellDef>Count</th>
+				<td mat-cell *matCellDef="let ele">{{ele.count}}</td>
+				<td mat-footer-cell *matFooterCellDef></td>
+      </ng-container>
+      <ng-container matColumnDef='attributes'>
+        <th mat-header-cell *matHeaderCellDef>Attributes</th>
+        <td mat-cell *matCellDef="let ele">
+          <div class="attributes">
+            {{ele.attributes.color}}, {{ele.attributes.size}}
+          </div>
+				</td>
+				<td mat-footer-cell *matFooterCellDef></td>
+      </ng-container>
+      <ng-container matColumnDef='image'>
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let ele">
+          <img src="https://images.nike.com/is/image/DotCom/PDP_HERO_ZOOM/158371C_410_A_PREM/converse-one-star-premium-suede-low-top-unisex-shoe.jpg"
+          />
+				</td>
+				<td mat-footer-cell *matFooterCellDef><b>Total</b></td>
+      </ng-container>
+      <ng-container matColumnDef='price'>
+        <th mat-header-cell *matHeaderCellDef>Price</th>
+        <td mat-cell *matCellDef="let ele">
+          {{ele.price}} {{ele.price_unit}}
+				</td>
+				<td mat-footer-cell *matFooterCellDef><b>{{orderDetail.total_price}} {{orderDetail.price_unit}}</b></td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="['image', 'description', 'attributes', 'count', 'price']"></tr>
+			<tr mat-row *matRowDef="let row; columns: ['image', 'description', 'attributes', 'count', 'price']"></tr>
+			<tr mat-footer-row *matFooterRowDef="['image', 'description', 'attributes', 'count', 'price']"></tr>
+    </table>
+  </div>
+</div>

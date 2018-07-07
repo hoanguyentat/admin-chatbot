@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { OrderDetail } from '../../../../shared/models/order-detail';
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
+import { OrderDetail } from '../../../../core/models/order-detail';
 
 const MOCK_DATA = {
   'id': '653678611405322',
@@ -50,72 +50,19 @@ const MOCK_DATA = {
   templateUrl: './order-detail.component.html',
   styleUrls: ['./order-detail.component.scss']
 })
-export class OrderDetailComponent implements OnInit {
+export class OrderDetailComponent implements OnChanges {
 
-  order_detail: OrderDetail = MOCK_DATA;
+  @Input()
+  public orderDetail: OrderDetail;
 
-  settings = {
-    hideSubHeader: true,
-    mode: 'external',
-    actions: null,
-    edit: {
-      editButtonContent: '<i class="fa fa-edit"></i>',
-      saveButtonContent: '<i class="fa fa-checkmark"></i>',
-      cancelButtonContent: '<i class="fa fa-close"></i>',
-    },
-    delete: {
-      deleteButtonContent: '<i class="fa fa-trash"></i>',
-      confirmDelete: true,
-    },
-    attr: {
-        class: 'table table-bordered'
-      },
-    columns: {
-      id: {
-        title: 'Id',
-        type: '$index'
-      },
-      name: {
-        title: 'Tên sản phẩm',
-        type: 'string'
-      },
-      description: {
-        title: 'Mô tả',
-        type: 'string'
-      },
-      quantity: {
-        title: 'Số lượng',
-        type: 'number'
-      },
-      price: {
-        title: 'Giá',
-        type: 'number'
-      },
-      price_unit: {
-        title: 'Mệnh giá',
-        type: 'string'
-      },
-      colors: {
-        title: 'Màu',
-        type: 'array'
-      },
-      sizes: {
-        title: 'Cỡ',
-        type: 'array'
-      },
-    }
-  };
-
-  source: LocalDataSource;
   constructor() {
-    this.source = new LocalDataSource();
-    this.source.load(this.order_detail.products);
   }
 
-  ngOnInit() {
+  ngOnChanges(changes: SimpleChanges) {
+    // TODO
   }
 
-  onDeleteConfirm(): void{
+  onDeleteConfirm(): void {
 
   }
 

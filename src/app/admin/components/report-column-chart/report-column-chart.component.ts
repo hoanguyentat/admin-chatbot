@@ -14,6 +14,5 @@ export class ReportColumnChartComponent implements OnInit {
     private sharedUiService: SharedUiService) { }
 
   ngOnInit() {
-   
   }
 }

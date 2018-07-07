@@ -1,15 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
-import { AdminModule } from './admin/admin.module';
-import { CommonModule } from '@angular/common';
 import { SharedModule } from './shared/shared.module';
+import { CoreModule } from './core/core.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpTokenInterceptor } from './core/interceptors/http-token-interceptor';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const appRoutes: Routes = [
   // { path: '', redirectTo: 'admin', pathMatch: 'full' },
@@ -20,8 +18,9 @@ const appRoutes: Routes = [
 @NgModule({
   imports: [
     BrowserModule,
-    HttpClientModule,
-    RouterModule.forRoot(appRoutes, { enableTracing: true }),
+    BrowserAnimationsModule,
+    CoreModule,
+    RouterModule.forRoot(appRoutes, { enableTracing: false }),
     SharedModule.forRoot()
   ],
   declarations: [
