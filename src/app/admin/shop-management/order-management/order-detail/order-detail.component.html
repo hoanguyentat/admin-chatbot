@@ -18,11 +18,11 @@
     </div> -->
     <div class="col-xl-6">
       <b>Ngày tạo: </b>
-      <span>{{orderDetail.created_at | date :'dd/MM/yyy'}}</span>
+      <span>{{orderDetail.created_at * 1000 | date :'dd/MM/yyy'}}</span>
     </div>
     <div class="col-xl-6">
       <b>Lần sửa cuối: </b>
-      <span>{{orderDetail.updated_at | date :'dd/MM/yyy'}}</span>
+      <span>{{orderDetail.updated_at * 1000 | date :'dd/MM/yyy'}}</span>
     </div>
   </div>
 </div>
