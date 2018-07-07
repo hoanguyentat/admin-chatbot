@@ -6,7 +6,6 @@ import { NgbModule, NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
 
 import { SharedService } from './shared.service';
 import { SharedUiService } from './shared-ui.service';
-import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { FormsModule } from '@angular/forms';
 import {
   MatButtonModule,
@@ -20,7 +19,6 @@ import { HttpClientModule } from '@angular/common/http';
 
 const BASE_MODULES = [
   CommonModule,
-  Ng2SmartTableModule,
   FormsModule,
   NgbModule,
   HttpClientModule

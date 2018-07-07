@@ -1,10 +1,6 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { ShopManagementComponent } from './shop-management.component';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
 import { SharedModule } from '../../shared/shared.module';
-import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [{
@@ -25,7 +21,6 @@ const routes: Routes = [{
 @NgModule({
   imports: [
     SharedModule,
-    Ng2SmartTableModule,
     RouterModule.forChild(routes)
   ],
   declarations: [ShopManagementComponent]

@@ -1313,82 +1313,8 @@ const MOCK_DATA: Product[] = [
 })
 export class ProductListComponent implements OnInit {
 
-  settings = {
-    hideSubHeader: true,
-    mode: 'external',
-    edit: {
-      editButtonContent: '<i class="fa fa-edit"></i>',
-      saveButtonContent: '<i class="fa fa-checkmark"></i>',
-      cancelButtonContent: '<i class="fa fa-close"></i>',
-    },
-    attr: {
-        class: 'table table-bordered'
-      },
-    delete: {
-      deleteButtonContent: '<i class="fa fa-trash"></i>',
-      confirmDelete: true,
-    },
-    columns: {
-      name: {
-        title: 'Name',
-        type: 'string'
-      },
-      brand: {
-        title: 'brand',
-        type: 'string'
-      },
-      colors: {
-        title: 'colors',
-        type: 'array'
-      },
-      count: {
-        title: 'count',
-        type: 'number'
-      },
-      description: {
-        title: 'description',
-        type: 'string'
-      },
-      price: {
-        title: 'price',
-        type: 'number'
-      },
-      price_unit: {
-        title: 'price_unit',
-        type: 'string'
-      },
-      sizes: {
-        title: 'sizes',
-        type: 'array'
-      },
-      url: {
-        title: 'url',
-        type: 'image'
-      }
-    }
-  };
-
-  source: LocalDataSource = new LocalDataSource();
-
   constructor(private router: Router) { }
 
   ngOnInit() {
-    this.source.load(MOCK_DATA);
   }
-
-  onDeleteConfirm(event): void {
-    console.log('clicked delete event');
-    if (window.confirm('Are you sure you want to delete?')) {
-      event.confirm.resolve();
-    } else {
-      event.confirm.reject();
-    }
-  }
-
-  onView(event): void {
-    console.log('This is clicked!');
-    this.router.navigate(['admin/shop-management/product-management', event.data.id]);
-  }
-
-
 }
