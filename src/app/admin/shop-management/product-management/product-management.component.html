@@ -1,8 +1,21 @@
-<div class="row" style="padding:1em;">
-    <div class="col-md-7">
-        <app-product-list></app-product-list>
+<div class="row row-eq-height" style="padding:1em;">
+    <div class="col">
+        <mat-card>
+            <mat-card-title>
+                <span>Product list</span>
+                <button mat-raised-button color="primary" class="pull-right">Thêm mới</button>
+            </mat-card-title>
+            <mat-card-content>
+                <app-product-list (selectProduct)="selectedProduct = $event"></app-product-list>
+            </mat-card-content>
+        </mat-card>
     </div>
-    <div class="col-md-5">
-        <app-product-detail></app-product-detail>
+    <div class="col-md-5" *ngIf="selectedProduct">
+        <mat-card>
+            <mat-card-title><span>Product Detail</span><button mat-raised-button color="primary" class="pull-right">Chỉnh sửa</button></mat-card-title>
+            <mat-card-content>
+                <!-- <app-order-detail [orderDetail]="selectedOrder"></app-order-detail> -->
+            </mat-card-content>
+        </mat-card>
     </div>
 </div>

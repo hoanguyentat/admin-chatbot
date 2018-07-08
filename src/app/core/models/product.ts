@@ -1,13 +1,16 @@
 export interface Product {
-    brand: string;
-    colors: string[];
-    count: number;
-    description: string;
-    id: string;
+    id: number;
+    updated_at: number;
+    created_at: number;
     name: string;
+    brand: string;
+    url: string;
     price: number;
     price_unit: string;
-    sizes: number[];
-    url: string;
-    url_images: string[];
+    count: number;
+    description: string;
+    attributes: {
+        color: string;
+        size: string;
+    };
 }

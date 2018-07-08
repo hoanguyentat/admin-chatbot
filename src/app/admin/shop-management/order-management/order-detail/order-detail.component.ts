@@ -55,15 +55,13 @@ export class OrderDetailComponent implements OnChanges {
   @Input()
   public orderDetail: OrderDetail;
 
+  displayedColumns = ['image', 'description', 'attributes', 'count', 'price'];
+
   constructor() {
   }
 
   ngOnChanges(changes: SimpleChanges) {
     // TODO
-  }
-
-  onDeleteConfirm(): void {
-
   }
 
 }
