@@ -13,8 +13,8 @@ export class ProductService {
 
   constructor(private http: HttpClient) { }
 
-  public createProduct(order: Product) {
-    // TO DO: put order to server
+  public createProduct(product: Product): Observable<any> {
+    return this.http.post(this.baseUrl, JSON.stringify(product));
   }
 
   public getProducts(page: number = 1, page_size: number = 10): Observable<any> {
