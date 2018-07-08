@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { ShopManagementComponent } from './shop-management.component';
 import { SharedModule } from '../../shared/shared.module';
 import { Routes, RouterModule } from '@angular/router';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 const routes: Routes = [{
   path: '',
@@ -21,7 +22,8 @@ const routes: Routes = [{
 @NgModule({
   imports: [
     SharedModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    FormsModule
   ],
   declarations: [ShopManagementComponent]
 })

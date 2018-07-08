@@ -1,0 +1,21 @@
+<div class="row row-eq-height" style="padding:1em;">
+    <div class="col">
+        <mat-card>
+            <mat-card-title>
+                <span>Danh sách khách hàng</span>
+                <button mat-raised-button color="primary" class="pull-right" (click)= "addUser()">Thêm mới</button>
+            </mat-card-title>
+            <mat-card-content>
+                <app-user-list (selectUser)="selectedUser = $event"></app-user-list>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div class="col-md-5" *ngIf="selectedUser">
+        <mat-card>
+            <mat-card-title><span>Chi tiết khách hàng</span><button mat-raised-button color="primary" class="pull-right">Chỉnh sửa</button></mat-card-title>
+            <mat-card-content>
+                <app-user-detail [userDetail]="selectedUser"></app-user-detail>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
