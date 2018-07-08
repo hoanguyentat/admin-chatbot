@@ -1,41 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { LocalDataSource } from 'ng2-smart-table';
-import { Router } from '@angular/router';
-
-
-const MOCK_DATA = {
-    "paging": {
-      "page": 1,
-      "total": 200,
-      "page_size": 2
-    },
-    "data": [
-      {
-        "id": "653678611405322",
-        "username": "Phuong NM",
-        "fullname": "Phuong Nguyen Minh",
-        "sex": "male",
-        "email": "phuongnm@bkav.com",
-        "phone": "0191512355",
-        "birth_day": "2018-06-01",
-        "role": "ADMIN",
-        "created_at": 1529913941,
-        "updated_at": 1529913941
-      },
-      {
-        "id": "653678611405322",
-        "username": "KhiemDH",
-        "fullname": "Doan Hoa Khiem",
-        "sex": "male",
-        "email": "khiemdh@bkav.com",
-        "phone": "0191512355",
-        "birth_day": "2018-06-01",
-        "role": "STAFF",
-        "created_at": 1529913941,
-        "updated_at": 1529913941
-      }
-    ]
-};
+import { Component, OnInit, ViewChild, Output, EventEmitter  } from '@angular/core';
+import { MatPaginator } from '@angular/material';
+import { switchMap, map, catchError, startWith, tap } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { User } from '../../../../core/models/User';
+import { UserService } from '../../../../core/services/user.service';
 
 @Component({
   selector: 'app-user-list',
@@ -46,77 +14,39 @@ const MOCK_DATA = {
 
 export class UserListComponent implements OnInit {
 
-  settings = {
-    hideSubHeader: true,
-    mode: 'external',
-    edit: {
-      editButtonContent: '<i class="fa fa-edit"></i>',
-      saveButtonContent: '<i class="fa fa-checkmark"></i>',
-      cancelButtonContent: '<i class="fa fa-close"></i>',
-    },
-    attr: {
-        class: 'table table-bordered'
-      },
-    delete: {
-      deleteButtonContent: '<i class="fa fa-trash"></i>',
-      confirmDelete: true,
-    },
-    columns: {
-      fullname: {
-        title: 'Tên tài khoản',
-        type: 'string'
-      },
-      sex: {
-        title: 'Giới tính',
-        type: 'string'
-      },
-      email: {
-        title: 'Email',
-        type: 'string'
-      },
-      phone: {
-        title: 'Số điện thoại',
-        type: 'number'
-      },
-      birth_day: {
-        title: 'Năm sinh',
-        type: 'string'
-      },
-      role: {
-        title: 'Role',
-        type: 'string'
-      },
-      created_at: {
-        title: 'Cập nhật',
-        type: 'number'
-      },
-      updated_at: {
-        title: 'Tạo',
-        type: 'number'
-      },
-    }
-  };
+  @ViewChild(MatPaginator)
+  public paginator: MatPaginator;
+  public data: User[] = [];
+  public displayedColumns: string[]
+    = ["id", "username", "full_name", "sex", "email", "phone", "birth_day", "role", "created_at", "updated_at"];
+    
+  @Output()
+  public selectUser = new EventEmitter<User>();
 
-  source: LocalDataSource = new LocalDataSource();
-
-  constructor(private router: Router) { }
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
-    this.source.load(MOCK_DATA.data);
+    this.paginator.pageIndex = 0;
+    this.paginator.page.pipe(
+      startWith({}),
+      switchMap(() => {
+        return this.userService.getUsers(this.paginator.pageIndex + 1, this.paginator.pageSize);
+      }),
+      map(resp => {
+        console.log(resp);
+        this.paginator.pageIndex = resp.paging.page - 1;
+        this.paginator.pageSize = resp.paging.page_size;
+        this.paginator.length = resp.paging.total;
+        return resp.data;
+      }),
+      catchError(() => {
+        return of([]);
+      }),
+    ).subscribe(data => this.data = data);
   }
 
-  onDeleteConfirm(event): void {
-    console.log("clicked delete event");
-    if (window.confirm('Are you sure you want to delete?')) {
-      event.confirm.resolve();
-    } else {
-      event.confirm.reject();
-    }
-  }
-
-  onView(event): void {
-    // console.log("This is clicked!");
-    this.router.navigate(['admin/shop-management/user-management', event.data.id]);
+  public onSelectedRow(user: User) {
+    this.selectUser.emit(user);
   }
 
 }
