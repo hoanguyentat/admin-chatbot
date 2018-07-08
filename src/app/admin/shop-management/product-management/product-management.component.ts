@@ -7,7 +7,8 @@ import { Product } from '../../../core/models/product';
 })
 export class ProductManagementComponent implements OnInit {
 
-  public selectedProduct: Product;
+  private selectedProduct: Product;
+  private openForm = false;
   constructor() { }
 
   ngOnInit() {
