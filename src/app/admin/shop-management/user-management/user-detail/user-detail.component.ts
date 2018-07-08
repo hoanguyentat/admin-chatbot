@@ -11,13 +11,10 @@ export class UserDetailComponent implements OnChanges {
 
   @Input()
   public userDetail: UserDetail;
-  constructor() {  }
+  constructor() { }
 
-  ngOnChanges(){
-    
-  }
+  ngOnChanges() {
 
-  ngOnInit() {
   }
 
 }

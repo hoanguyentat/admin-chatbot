@@ -11,15 +11,14 @@ import { UserService } from '../../../../core/services/user.service';
   styleUrls: ['./user-list.component.scss']
 })
 
-
 export class UserListComponent implements OnInit {
 
   @ViewChild(MatPaginator)
   public paginator: MatPaginator;
   public data: User[] = [];
   public displayedColumns: string[]
-    = ["id", "username", "full_name", "sex", "email", "phone", "birth_day", "role", "created_at", "updated_at"];
-    
+    = ['id', 'username', 'full_name', 'sex', 'email', 'phone', 'birth_day', 'role', 'created_at', 'updated_at'];
+
   @Output()
   public selectUser = new EventEmitter<User>();
 
