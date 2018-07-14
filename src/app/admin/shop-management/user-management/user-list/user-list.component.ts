@@ -17,7 +17,7 @@ export class UserListComponent implements OnInit {
   public paginator: MatPaginator;
   public data: User[] = [];
   public displayedColumns: string[]
-    = ['id', 'username', 'full_name', 'sex', 'email', 'phone', 'birth_day', 'role', 'created_at', 'updated_at'];
+    = ['username', 'full_name', 'sex', 'email', 'phone', 'birth_day', 'role'];
 
   @Output()
   public selectUser = new EventEmitter<User>();
