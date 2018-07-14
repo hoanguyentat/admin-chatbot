@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
-import { LocalDataSource, ServerDataSource } from 'ng2-smart-table';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../../environments/environment';

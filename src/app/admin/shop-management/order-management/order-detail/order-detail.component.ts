@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { LocalDataSource } from 'ng2-smart-table';
 import { OrderDetail } from '../../../../core/models/order-detail';
 
 const MOCK_DATA = {
