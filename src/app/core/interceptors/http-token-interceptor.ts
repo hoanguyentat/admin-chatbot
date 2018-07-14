@@ -6,8 +6,8 @@ import { environment } from '../../../environments/environment';
 @Injectable()
 export class HttpTokenInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    console.log('http token interceptor');
-    console.log(req);
+    // console.log('http token interceptor');
+    // console.log(req);
     const headersConfig = {
       'Content-Type': 'application/json',
       'Accept': 'application/json',

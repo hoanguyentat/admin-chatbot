@@ -1,11 +1,11 @@
 <div class="container">
   <div *ngIf="user">
-    <h2>Chỉnh sửa tài khoản {{user.full_name}}</h2>
+    <h2  style="text-align: center;">Chỉnh sửa tài khoản {{user.full_name}}</h2>
     <form (ngSubmit)="onSubmit()" #userForm="ngForm">
       <div class="form-group">
         <label for="name">Tên tài khoản</label>
         <input type="text" class="form-control" id="username"
-                required
+                required [disabled] = "true"
                 [(ngModel)]="user.username" name="username"
                 #username="ngModel">
       </div>
