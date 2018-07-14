@@ -10,7 +10,8 @@ import { HttpClient } from '@angular/common/http';
 })
 
 export class UserService {
-  private baseUrl = environment.domain + '/api/v1/users/';
+  private baseUrlList = environment.domain + '/api/v1/users/';
+  private baseUserAdd = environment.domain + '/api/v1/user/';
 
   constructor(private http: HttpClient) { }
 
@@ -22,14 +23,22 @@ export class UserService {
       "phone": user.phone,
       "password": user.password
     }
-    return this.http.post(this.baseUrl, data);
+    return this.http.post(this.baseUserAdd, data);
   }
 
   public getUsers(page: number = 1, page_size: number = 10): Observable<any> {
-    return this.http.get(this.baseUrl + '?page=' + page + '&page_size=' + page_size);
+    return this.http.get(this.baseUrlList + '?page=' + page + '&page_size=' + page_size);
   }
 
   public getUser(userId: string): Observable<any> {
-    return this.http.get(this.baseUrl + userId + '/');
+    return this.http.get(this.baseUrlList + userId + '/');
+  }
+
+  public updatUser(data: any): Observable<any> {
+    return this.http.put(this.baseUrlList + data.id + '/', data);
+  }
+
+  public deleteUser(userId: string): Observable<any> {
+    return this.http.delete(this.baseUrlList + userId + '/');
   }
 }

@@ -1,0 +1,39 @@
+<div class="container">
+  <div [hidden]="submitted">
+    <h2>Chỉnh sửa tài khoản {{user.full_name}}</h2>
+    <form (ngSubmit)="onSubmit()" #userForm="ngForm">
+      <div class="form-group">
+        <label for="name">Tên tài khoản</label>
+        <input type="text" class="form-control" id="username"
+               required
+               [(ngModel)]="user.username" name="username"
+               #username="ngModel">
+      </div>
+
+      <div class="form-group">
+        <label for="birth_day">Ngày sinh</label>
+        <input type="date" class="form-control" id="birth_day"
+            [(ngModel)]="user.birth_day" name="birth_day">
+      </div>
+
+      <div class="form-group">
+        <label for="sex">Giới tính</label>
+        <select class="form-control" id="sex" [(ngModel)]="user.sex" name="sex">
+          <option value="female">Female</option>
+          <option value="male">Male</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email"
+            [(ngModel)]="user.email" name="email">
+      </div>
+      <div class="form-group">
+        <label for="full_name">Tên đầy đủ</label>
+        <input type="text" class="form-control" id="full_name"
+            [(ngModel)]="user.full_name" name="full_name">
+      </div>
+
+      <button type="submit" class="btn btn-success" [disabled]="!userForm.form.valid">Cập nhật</button>
+    </form>
+  </div>

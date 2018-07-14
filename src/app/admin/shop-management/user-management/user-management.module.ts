@@ -8,11 +8,13 @@ import { Routes, RouterModule } from '@angular/router';
 import { UserAddComponent } from './user-add/user-add.component';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { FormsModule } from '@angular/forms';
+import { UserEditComponent } from './user-edit/user-edit.component';
 
 const routes: Routes = [
   {path: '', component: UserManagementComponent},
   {path: 'add', component: UserAddComponent},
-  {path: 'detail/:id', component: UserDetailComponent}
+  {path: 'detail/:id', component: UserDetailComponent},
+  {path: 'edit/:id', component: UserEditComponent}
 ];
 
 @NgModule({
@@ -22,7 +24,7 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     FormsModule
   ],
-  declarations: [UserListComponent, UserDetailComponent, UserManagementComponent, UserAddComponent]
+  declarations: [UserListComponent, UserDetailComponent, UserManagementComponent, UserAddComponent, UserEditComponent]
 })
 export class UserManagementModule { 
 

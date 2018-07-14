@@ -12,7 +12,7 @@
     </div>
     <div class="col-md-5" *ngIf="selectedUser">
         <mat-card>
-            <mat-card-title><span>Chi tiết khách hàng</span><button mat-raised-button color="primary" class="pull-right">Chỉnh sửa</button></mat-card-title>
+            <mat-card-title><span>Chi tiết khách hàng</span><button mat-raised-button color="primary" class="pull-right" (click)= "editUser(selectedUser.id)">Chỉnh sửa</button></mat-card-title>
             <mat-card-content>
                 <app-user-detail [userDetail]="selectedUser"></app-user-detail>
             </mat-card-content>

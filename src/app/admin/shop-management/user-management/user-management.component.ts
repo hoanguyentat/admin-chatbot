@@ -17,6 +17,10 @@ export class UserManagementComponent implements OnInit {
     this.router.navigate(['admin/shop-management/user-management/add']);
   }
 
+  editUser(userId): void {
+    this.router.navigate(['admin/shop-management/user-management/edit/', userId]);
+  }
+
   ngOnInit() {
   }
 

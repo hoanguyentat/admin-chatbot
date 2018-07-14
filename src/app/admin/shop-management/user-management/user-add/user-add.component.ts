@@ -20,8 +20,10 @@ export class UserAddComponent implements OnInit {
     } else {
       this.userService.createUser(this.user).subscribe(result => {
         console.log(result);
+        alert('Thêm user thành công');
       }, err => {
         console.log(err)
+        alert("Thêm user không thành công");
       });
     }
   }
