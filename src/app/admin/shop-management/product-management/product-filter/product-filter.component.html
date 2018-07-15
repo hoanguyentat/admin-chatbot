@@ -1,0 +1,29 @@
+<mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Filter
+      </mat-panel-title>
+      <mat-panel-description>
+
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div class="row">
+      <mat-form-field class="col">
+        <input matInput [(ngModel)]="brand" placeholder="Brand">
+      </mat-form-field>
+      <mat-form-field class="col">
+        <input matInput [(ngModel)]="price" type="number" placeholder="Price">
+      </mat-form-field>
+      <mat-form-field class="col">
+        <input matInput [(ngModel)]="name" placeholder="Name">
+      </mat-form-field>
+      <mat-form-field class="col">
+        <input matInput [(ngModel)]="color" placeholder="Color">
+      </mat-form-field>
+      <mat-form-field class="col">
+          <input matInput [(ngModel)]="size" placeholder="Size">
+      </mat-form-field>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>

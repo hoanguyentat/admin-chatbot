@@ -3,7 +3,7 @@ import { Product } from '../../../../core/models/product';
 import { MatPaginator } from '@angular/material';
 import { ProductService } from '../../../../core/services/product.service';
 import { startWith, switchMap, map, catchError } from 'rxjs/operators';
-import { of } from 'rxjs';
+import { of, Subject, merge } from 'rxjs';
 
 @Component({
   selector: 'app-product-list',
@@ -17,16 +17,19 @@ export class ProductListComponent implements OnInit {
   public data: Product[] = [];
   @Output()
   public selectProduct = new EventEmitter<Product>();
+  public selectedProduct: Product;
+  private reloadSubject = new Subject<any>();
+  private filters: Object = {};
 
-  displayedColumns = ['id', 'name', 'brand', 'price', 'count', 'color', 'size', 'image', 'updated_at', 'created_at'];
+  displayedColumns = ['id', 'name', 'brand', 'price', 'count', 'color', 'size', 'image', 'updated_at', 'created_at', 'action'];
   constructor(private productService: ProductService) { }
 
   ngOnInit() {
     this.paginator.pageIndex = 0;
-    this.paginator.page.pipe(
+    merge(this.reloadSubject, this.paginator.page).pipe(
       startWith({}),
       switchMap(() => {
-        return this.productService.getProducts(this.paginator.pageIndex + 1, this.paginator.pageSize);
+        return this.productService.getProducts(this.paginator.pageIndex + 1, this.paginator.pageSize, this.filters);
       }),
       map(resp => {
         console.log(resp);
@@ -42,6 +45,23 @@ export class ProductListComponent implements OnInit {
   }
 
   public onSelectedRow(product: Product) {
-    this.selectProduct.emit(product);
+    this.selectedProduct = product;
+    this.selectProduct.emit(JSON.parse(JSON.stringify(product)));
+  }
+
+  public reload() {
+    this.reloadSubject.next();
+  }
+
+  public applyFilters(filters: Object) {
+    this.filters = filters;
+    this.reload();
+  }
+
+  private delete(product: Product) {
+    this.productService.deleteProduct(product.id).subscribe(data => {
+      this.reload();
+    });
+    console.log(this.selectedProduct.id);
   }
 }
