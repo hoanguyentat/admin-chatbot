@@ -1,0 +1,59 @@
+<mat-card-content>
+  <mat-card>
+    <div class="order-form">
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Name" [(ngModel)]="order.id">
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Brand" [(ngModel)]="order.user_backend_id">
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Url" [(ngModel)]="order.customer_name">
+      </mat-form-field>
+      <table class="full-width">
+        <tr>
+          <td>
+            <mat-form-field class="full-width">
+              <input matInput type="number" min="0" step="1" placeholder="Price" [(ngModel)]="order.customer_address">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Price Unit" [(ngModel)]="order.total_products">
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+      <mat-form-field class="full-width">
+        <input matInput type="number" min="0" step="1" placeholder="Count" [(ngModel)]="order.total_price">
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <textarea matInput placeholder="Description" [(ngModel)]="order.price_unit"></textarea>
+      </mat-form-field>
+
+      <table class="full-width">
+          <tr>
+            <td>
+              <mat-form-field class="full-width">
+                <input matInput placeholder="Color" [(ngModel)]="order.updated_at">
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field class="full-width">
+                <mat-select placeholder="Size" [(ngModel)]="order.created_at">
+                    <mat-option *ngFor="let size of ['S', 'M', 'L', 'XL', 'XXL']" [value]="size">
+                      {{size}}
+                    </mat-option>
+                  </mat-select>
+              </mat-form-field>
+            </td>
+          </tr>
+        </table>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Image Url" [(ngModel)]="order.user_backend_name">
+      </mat-form-field>
+    </div>  
+  </mat-card>
+</mat-card-content>

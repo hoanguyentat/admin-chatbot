@@ -3,7 +3,7 @@
         <mat-card>
             <mat-card-title>
                 <span>Order list</span>
-                <button mat-raised-button color="primary" class="pull-right">ADD NEW</button>
+                <button mat-raised-button color="primary" class="pull-right" (click)="addOrder()">Thêm mới</button>
             </mat-card-title>
             <mat-card-content>
                 <app-order-list (selectOrder)="selectedOrder = $event"></app-order-list>
@@ -12,7 +12,7 @@
     </div>
     <div class="col-md-5" *ngIf="selectedOrder">
         <mat-card>
-            <mat-card-title><span>Order detail</span><button mat-raised-button color="primary" class="pull-right">Chỉnh sửa</button></mat-card-title>
+            <mat-card-title><span>Order detail</span><button mat-raised-button color="primary" (click) = "editOrder(selectedOrder.id)" class="pull-right">Chỉnh sửa</button></mat-card-title>
             <mat-card-content>
                 <app-order-detail [orderDetail]="selectedOrder"></app-order-detail>
             </mat-card-content>
