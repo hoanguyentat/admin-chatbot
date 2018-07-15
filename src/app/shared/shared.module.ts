@@ -18,7 +18,9 @@ import {
   MatPaginatorModule,
   MatFormFieldModule,
   MatInputModule,
-  MatSelectModule
+  MatSelectModule,
+  MatSnackBarModule,
+  MatExpansionModule
 } from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -40,7 +42,9 @@ const MAT_MODULES = [
   MatPaginatorModule,
   MatFormFieldModule,
   MatInputModule,
-  MatSelectModule
+  MatSelectModule,
+  MatSnackBarModule,
+  MatExpansionModule
 ];
 
 const COMPONENT = [];

@@ -1,9 +1,13 @@
 <div class="row row-eq-height" style="padding:1em;">
   <div class="col">
-    <mat-card>
+    <app-product-filter></app-product-filter>
+    <mat-card style="margin-top: 1em; margin-bottom: 1em;">
       <mat-card-title>
         <span>Product list</span>
-        <button mat-raised-button color="primary" class="pull-right" (click)="openForm = true; selectedProduct = null;">ADD NEW</button>
+        <div class="action pull-right">
+          <button mat-raised-button color="primary" (click)="applyFilters();" style="margin-right: 1em;">APPLY FILTER</button>
+          <button mat-raised-button color="primary" (click)="openForm = true; clearSelectedProduct();">ADD NEW</button>
+        </div>
       </mat-card-title>
       <mat-card-content>
         <app-product-list (selectProduct)="selectedProduct = $event; openForm = true"></app-product-list>
@@ -18,8 +22,8 @@
       </mat-card-content>
       <mat-card-actions>
         <button mat-raised-button color="primary" *ngIf="!selectedProduct" (click)="createProduct()">ADD</button>
-        <button mat-raised-button color="primary" *ngIf="selectedProduct">EDIT</button>
-        <button mat-raised-button (click)="openForm = false; selectedProduct = null">CLOSE</button>
+        <button mat-raised-button color="primary" *ngIf="selectedProduct" (click)="editProduct()">EDIT</button>
+        <button mat-raised-button (click)="openForm = false; clearSelectedProduct();">CLOSE</button>
       </mat-card-actions>
     </mat-card>
   </div>

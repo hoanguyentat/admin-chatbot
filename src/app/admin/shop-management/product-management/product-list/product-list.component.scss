@@ -1,3 +1,4 @@
+$selected-row-color: #99ccff;
 table {
     width: 100%;
     tr.element-row:hover {
@@ -6,5 +7,14 @@ table {
     img {
         max-width: 1cm;
         max-height: 1cm;
+    }
+    .seleted-row {
+        background: $selected-row-color !important;
+    }
+    .seleted-row:hover {
+        background: $selected-row-color !important;
+    }
+    i {
+        color: #3F51B5;
     }
 }
