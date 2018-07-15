@@ -8,17 +8,17 @@ import { ProductListComponent } from './product-list/product-list.component';
 
 @Component({
   selector: 'app-product-management',
-  templateUrl: './product-management.component.html'
+  templateUrl: './product-management.component.html',
 })
 export class ProductManagementComponent {
 
   @ViewChild(ProductListComponent)
   private productListComponent: ProductListComponent;
+  @ViewChild(ProductFormComponent)
+  private productFormComponet: ProductFormComponent;
 
   private selectedProduct: Product;
   private openForm = false;
-  @ViewChild(ProductFormComponent)
-  private productFormComponet: ProductFormComponent;
   constructor(private productService: ProductService) { }
 
   private createProduct() {
@@ -28,6 +28,7 @@ export class ProductManagementComponent {
       tap(_ => {
         this.openForm = false;
         this.selectedProduct = null;
+        this.productListComponent.reload();
       }),
       catchError((err) => {
         console.log(err);
@@ -46,6 +47,7 @@ export class ProductManagementComponent {
       tap(_ => {
         this.openForm = false;
         this.selectedProduct = null;
+        this.productListComponent.reload();
       }),
       catchError(err => {
         console.log('error');

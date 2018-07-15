@@ -20,6 +20,7 @@ import {
   MatInputModule,
   MatSelectModule,
   MatSnackBarModule,
+  MatExpansionModule
 } from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -42,7 +43,8 @@ const MAT_MODULES = [
   MatFormFieldModule,
   MatInputModule,
   MatSelectModule,
-  MatSnackBarModule
+  MatSnackBarModule,
+  MatExpansionModule
 ];
 
 const COMPONENT = [];

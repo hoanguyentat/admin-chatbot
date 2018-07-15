@@ -2,8 +2,8 @@ import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/cor
 import { Product } from '../../../../core/models/product';
 import { MatPaginator } from '@angular/material';
 import { ProductService } from '../../../../core/services/product.service';
-import { startWith, switchMap, map, catchError } from 'rxjs/operators';
-import { of } from 'rxjs';
+import { startWith, switchMap, map, catchError} from 'rxjs/operators';
+import { of, Subject, merge } from 'rxjs';
 
 @Component({
   selector: 'app-product-list',
@@ -18,13 +18,14 @@ export class ProductListComponent implements OnInit {
   @Output()
   public selectProduct = new EventEmitter<Product>();
   public selectedProduct: Product;
+  private reloadSubject = new Subject<any>();
 
   displayedColumns = ['id', 'name', 'brand', 'price', 'count', 'color', 'size', 'image', 'updated_at', 'created_at', 'action'];
   constructor(private productService: ProductService) { }
 
   ngOnInit() {
     this.paginator.pageIndex = 0;
-    this.paginator.page.pipe(
+    merge(this.reloadSubject, this.paginator.page).pipe(
       startWith({}),
       switchMap(() => {
         return this.productService.getProducts(this.paginator.pageIndex + 1, this.paginator.pageSize);
@@ -44,6 +45,10 @@ export class ProductListComponent implements OnInit {
 
   public onSelectedRow(product: Product) {
     this.selectedProduct = product;
-    this.selectProduct.emit(product);
+    this.selectProduct.emit(JSON.parse(JSON.stringify(product)));
+  }
+
+  public reload() {
+    this.reloadSubject.next();
   }
 }
