@@ -24,4 +24,9 @@ export class ProductService {
   public getProduct(product_id: string): Observable<any> {
     return this.http.get(this.baseUrl + product_id + '/');
   }
+
+  public updateProduct(product: Product): Observable<any> {
+    const _url = this.baseUrl + product.id + '/';
+    return this.http.put(_url, JSON.stringify(product));
+  }
 }

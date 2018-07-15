@@ -18,7 +18,7 @@
       </mat-card-content>
       <mat-card-actions>
         <button mat-raised-button color="primary" *ngIf="!selectedProduct" (click)="createProduct()">ADD</button>
-        <button mat-raised-button color="primary" *ngIf="selectedProduct">EDIT</button>
+        <button mat-raised-button color="primary" *ngIf="selectedProduct" (click)="editProduct()">EDIT</button>
         <button mat-raised-button (click)="openForm = false; clearSelectedProduct();">CLOSE</button>
       </mat-card-actions>
     </mat-card>

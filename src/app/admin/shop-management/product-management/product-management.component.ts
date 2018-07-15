@@ -41,4 +41,18 @@ export class ProductManagementComponent {
     this.productListComponent.selectedProduct = null;
   }
 
+  private editProduct() {
+    this.productService.updateProduct(this.selectedProduct).pipe(
+      tap(_ => {
+        this.openForm = false;
+        this.selectedProduct = null;
+      }),
+      catchError(err => {
+        console.log('error');
+        console.log(err);
+        return of({});
+      })
+    ).subscribe(data => { });
+  }
+
 }
