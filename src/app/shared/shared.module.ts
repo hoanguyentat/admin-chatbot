@@ -19,7 +19,7 @@ import {
   MatFormFieldModule,
   MatInputModule,
   MatSelectModule,
-  MatSnackBarModule
+  MatSnackBarModule,
 } from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
 

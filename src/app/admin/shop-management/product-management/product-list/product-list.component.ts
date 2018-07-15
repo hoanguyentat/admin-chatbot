@@ -19,7 +19,7 @@ export class ProductListComponent implements OnInit {
   public selectProduct = new EventEmitter<Product>();
   public selectedProduct: Product;
 
-  displayedColumns = ['id', 'name', 'brand', 'price', 'count', 'color', 'size', 'image', 'updated_at', 'created_at'];
+  displayedColumns = ['id', 'name', 'brand', 'price', 'count', 'color', 'size', 'image', 'updated_at', 'created_at', 'action'];
   constructor(private productService: ProductService) { }
 
   ngOnInit() {
