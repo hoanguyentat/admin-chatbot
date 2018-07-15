@@ -9,9 +9,12 @@ table {
         max-height: 1cm;
     }
     .seleted-row {
-        background: $selected-row-color;
+        background: $selected-row-color !important;
     }
     .seleted-row:hover {
         background: $selected-row-color !important;
+    }
+    i {
+        color: #3F51B5;
     }
 }

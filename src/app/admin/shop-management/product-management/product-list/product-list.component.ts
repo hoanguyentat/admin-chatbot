@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/cor
 import { Product } from '../../../../core/models/product';
 import { MatPaginator } from '@angular/material';
 import { ProductService } from '../../../../core/services/product.service';
-import { startWith, switchMap, map, catchError} from 'rxjs/operators';
+import { startWith, switchMap, map, catchError } from 'rxjs/operators';
 import { of, Subject, merge } from 'rxjs';
 
 @Component({
@@ -50,5 +50,12 @@ export class ProductListComponent implements OnInit {
 
   public reload() {
     this.reloadSubject.next();
+  }
+
+  private delete(product: Product) {
+    this.productService.deleteProduct(product.id).subscribe(data => {
+      this.reload();
+    });
+    console.log(this.selectedProduct.id);
   }
 }
