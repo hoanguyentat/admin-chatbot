@@ -19,6 +19,7 @@ export class ProductListComponent implements OnInit {
   public selectProduct = new EventEmitter<Product>();
   public selectedProduct: Product;
   private reloadSubject = new Subject<any>();
+  private filters: Object = {};
 
   displayedColumns = ['id', 'name', 'brand', 'price', 'count', 'color', 'size', 'image', 'updated_at', 'created_at', 'action'];
   constructor(private productService: ProductService) { }
@@ -28,7 +29,7 @@ export class ProductListComponent implements OnInit {
     merge(this.reloadSubject, this.paginator.page).pipe(
       startWith({}),
       switchMap(() => {
-        return this.productService.getProducts(this.paginator.pageIndex + 1, this.paginator.pageSize);
+        return this.productService.getProducts(this.paginator.pageIndex + 1, this.paginator.pageSize, this.filters);
       }),
       map(resp => {
         console.log(resp);
@@ -50,6 +51,11 @@ export class ProductListComponent implements OnInit {
 
   public reload() {
     this.reloadSubject.next();
+  }
+
+  public applyFilters(filters: Object) {
+    this.filters = filters;
+    this.reload();
   }
 
   private delete(product: Product) {

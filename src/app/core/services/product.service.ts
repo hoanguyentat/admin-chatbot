@@ -36,8 +36,12 @@ export class ProductService {
     );
   }
 
-  public getProducts(page: number = 1, page_size: number = 10): Observable<any> {
-    return this.http.get(this.getUrl() + '?page=' + page + '&page_size=' + page_size);
+  public getProducts(page: number = 1, page_size: number = 10, filters = {}): Observable<any> {
+    const params = Object.assign({
+      'page': page.toString(),
+      'page_size': page_size.toString()
+     }, filters);
+    return this.http.get(this.getUrl(), { params });
   }
 
   public getProduct(product_id: string): Observable<any> {

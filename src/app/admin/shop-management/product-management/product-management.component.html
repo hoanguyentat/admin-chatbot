@@ -4,7 +4,10 @@
     <mat-card style="margin-top: 1em; margin-bottom: 1em;">
       <mat-card-title>
         <span>Product list</span>
-        <button mat-raised-button color="primary" class="pull-right" (click)="openForm = true; clearSelectedProduct();">ADD NEW</button>
+        <div class="action pull-right">
+          <button mat-raised-button color="primary" (click)="applyFilters();" style="margin-right: 1em;">APPLY FILTER</button>
+          <button mat-raised-button color="primary" (click)="openForm = true; clearSelectedProduct();">ADD NEW</button>
+        </div>
       </mat-card-title>
       <mat-card-content>
         <app-product-list (selectProduct)="selectedProduct = $event; openForm = true"></app-product-list>
