@@ -3,7 +3,7 @@
     <mat-card>
       <mat-card-title>
         <span>Product list</span>
-        <button mat-raised-button color="primary" class="pull-right" (click)="openForm = true; selectedProduct = null;">ADD NEW</button>
+        <button mat-raised-button color="primary" class="pull-right" (click)="openForm = true; clearSelectedProduct();">ADD NEW</button>
       </mat-card-title>
       <mat-card-content>
         <app-product-list (selectProduct)="selectedProduct = $event; openForm = true"></app-product-list>
@@ -19,7 +19,7 @@
       <mat-card-actions>
         <button mat-raised-button color="primary" *ngIf="!selectedProduct" (click)="createProduct()">ADD</button>
         <button mat-raised-button color="primary" *ngIf="selectedProduct">EDIT</button>
-        <button mat-raised-button (click)="openForm = false; selectedProduct = null">CLOSE</button>
+        <button mat-raised-button (click)="openForm = false; clearSelectedProduct();">CLOSE</button>
       </mat-card-actions>
     </mat-card>
   </div>

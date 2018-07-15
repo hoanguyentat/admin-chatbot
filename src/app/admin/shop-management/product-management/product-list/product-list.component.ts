@@ -17,6 +17,7 @@ export class ProductListComponent implements OnInit {
   public data: Product[] = [];
   @Output()
   public selectProduct = new EventEmitter<Product>();
+  public selectedProduct: Product;
 
   displayedColumns = ['id', 'name', 'brand', 'price', 'count', 'color', 'size', 'image', 'updated_at', 'created_at'];
   constructor(private productService: ProductService) { }
@@ -42,6 +43,7 @@ export class ProductListComponent implements OnInit {
   }
 
   public onSelectedRow(product: Product) {
+    this.selectedProduct = product;
     this.selectProduct.emit(product);
   }
 }

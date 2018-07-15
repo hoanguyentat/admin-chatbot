@@ -50,7 +50,9 @@
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="element-row" (click)="onSelectedRow(row)"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="element-row"
+    [class.seleted-row]="row == selectedProduct"
+     (click)="onSelectedRow(row)"></tr>
   </table>
 </div>
 <mat-paginator [pageSize]="10"></mat-paginator>
