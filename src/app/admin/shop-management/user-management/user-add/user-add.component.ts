@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserService } from '../../../../core/services/user.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -21,9 +22,10 @@ export class UserAddComponent implements OnInit {
       this.userService.createUser(this.user).subscribe(result => {
         console.log(result);
         alert('Thêm user thành công');
+        this.router.navigate(['/admin/shop-management/user-management']);
       }, err => {
         console.log(err)
-        alert("Thêm user không thành công");
+        alert(String(err.error.username));
       });
     }
   }
@@ -33,7 +35,7 @@ export class UserAddComponent implements OnInit {
   }
 
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
   }
