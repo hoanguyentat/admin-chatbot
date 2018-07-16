@@ -3,9 +3,10 @@
     <input matInput placeholder="Name" [(ngModel)]="product.name">
   </mat-form-field>
 
-  <mat-form-field class="full-width">
+  <!-- <mat-form-field class="full-width">
     <input matInput placeholder="Brand" [(ngModel)]="product.brand">
-  </mat-form-field>
+  </mat-form-field> -->
+  <app-autocomplete label="Brand" [(model)]="product.brand" [options]="['Nike', 'Thuong Dinh', 'Addias']"></app-autocomplete>
 
   <mat-form-field class="full-width">
     <input matInput placeholder="Url" [(ngModel)]="product.url">
@@ -18,9 +19,7 @@
         </mat-form-field>
       </td>
       <td>
-        <mat-form-field class="full-width">
-          <input matInput placeholder="Price Unit" [(ngModel)]="product.price_unit">
-        </mat-form-field>
+        <app-autocomplete label="Price Unit" [(model)]="product.price_unit" [options]="['USD', 'VND', 'EUR', 'RUP']"></app-autocomplete>
       </td>
     </tr>
   </table>
@@ -39,13 +38,7 @@
           </mat-form-field>
         </td>
         <td>
-          <mat-form-field class="full-width">
-            <mat-select placeholder="Size" [(ngModel)]="product.attributes.size">
-                <mat-option *ngFor="let size of ['S', 'M', 'L', 'XL', 'XXL']" [value]="size">
-                  {{size}}
-                </mat-option>
-              </mat-select>
-          </mat-form-field>
+          <app-autocomplete label="Size" [(model)]="product.attributes.size" [options]="['S', 'M', 'L', 'XL']"></app-autocomplete>
         </td>
       </tr>
     </table>
