@@ -9,9 +9,7 @@
       </mat-panel-description>
     </mat-expansion-panel-header>
     <div class="row">
-      <mat-form-field class="col">
-        <input matInput [(ngModel)]="brand" placeholder="Brand">
-      </mat-form-field>
+      <app-autocomplete label="Brand" [(model)]="brand" [options]="['Nike', 'Thuong dinh', 'Addias']"></app-autocomplete>
       <mat-form-field class="col">
         <input matInput [(ngModel)]="price" type="number" placeholder="Price">
       </mat-form-field>

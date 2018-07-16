@@ -6,7 +6,7 @@ import { NgbModule, NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
 
 import { SharedService } from './shared.service';
 import { SharedUiService } from './shared-ui.service';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   MatButtonModule,
   MatMenuModule,
@@ -20,13 +20,16 @@ import {
   MatInputModule,
   MatSelectModule,
   MatSnackBarModule,
-  MatExpansionModule
+  MatExpansionModule,
+  MatAutocompleteModule
 } from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
+import { AutocompleteComponent } from './components/autocomplete/autocomplete.component';
 
 const BASE_MODULES = [
   CommonModule,
   FormsModule,
+  ReactiveFormsModule,
   NgbModule,
   HttpClientModule
 ];
@@ -44,10 +47,13 @@ const MAT_MODULES = [
   MatInputModule,
   MatSelectModule,
   MatSnackBarModule,
-  MatExpansionModule
+  MatExpansionModule,
+  MatAutocompleteModule
 ];
 
-const COMPONENT = [];
+const COMPONENT = [
+  AutocompleteComponent
+];
 
 @NgModule({
   declarations: [...COMPONENT],
