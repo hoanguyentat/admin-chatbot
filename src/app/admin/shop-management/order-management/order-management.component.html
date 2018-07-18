@@ -1,6 +1,6 @@
 <div class="row row-eq-height" style="padding:1em;">
     <div class="col">
-        <mat-card>
+        <mat-card style="margin-bottom: 1em;">
             <mat-card-title>
                 <span>Order list</span>
                 <button mat-raised-button color="primary" class="pull-right" (click)="addOrder()">Thêm mới</button>
@@ -12,10 +12,15 @@
     </div>
     <div class="col-md-5" *ngIf="selectedOrder">
         <mat-card>
-            <mat-card-title><span>Order detail</span><button mat-raised-button color="primary" (click) = "editOrder(selectedOrder.id)" class="pull-right">Chỉnh sửa</button></mat-card-title>
+            <mat-card-title>Order overview</mat-card-title>
             <mat-card-content>
-                <app-order-detail [orderDetail]="selectedOrder"></app-order-detail>
+                <app-order-overview [orderDetail]="selectedOrder"></app-order-overview>
+                
             </mat-card-content>
+            <mat-card-actions>
+                <button mat-raised-button color="primary">Edit</button>
+                <button mat-raised-button (click)="selectedOrder = null">CLOSE</button>
+            </mat-card-actions>
         </mat-card>
     </div>
 </div>

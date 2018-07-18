@@ -1,17 +1,14 @@
 import { NgModule } from '@angular/core';
 import { OrderListComponent } from './order-list/order-list.component';
-import { OrderDetailComponent } from './order-detail/order-detail.component';
 import { OrderManagementComponent } from './order-management.component';
 import { SharedModule } from '../../../shared/shared.module';
 import { Routes, RouterModule } from '@angular/router';
-import { OrderAddComponent } from './order-add/order-add.component';
-import { OrderEditComponent } from './order-edit/order-edit.component';
+import { OrderOverviewComponent } from './order-overview/order-overview.component';
+import { OrderFormComponent } from './order-form/order-form.component';
 
 const routes: Routes = [
   {path: '', component: OrderManagementComponent},
-  {path: 'add', component: OrderAddComponent},
-  {path: 'detail/:id', component: OrderDetailComponent}, 
-  {path: 'edit/:id', component: OrderEditComponent}
+  // {path: ':id', component: OrderDetailComponent},
 ];
 
 @NgModule({
@@ -19,6 +16,6 @@ const routes: Routes = [
     SharedModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [OrderListComponent, OrderDetailComponent, OrderManagementComponent, OrderAddComponent, OrderEditComponent]
+  declarations: [OrderListComponent, OrderManagementComponent, OrderOverviewComponent, OrderFormComponent]
 })
 export class OrderManagementModule { }
