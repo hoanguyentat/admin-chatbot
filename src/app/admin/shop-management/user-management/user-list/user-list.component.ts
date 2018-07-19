@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Output, EventEmitter  } from '@angular/core';
+import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
 import { MatPaginator } from '@angular/material';
 import { switchMap, map, catchError, startWith, tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
@@ -50,15 +50,15 @@ export class UserListComponent implements OnInit {
   }
 
   deleteUser(userId): void {
-    let r = confirm('Xoa user ' + userId);
-    if(r == true) {
+    const r = confirm('Xoa user ' + userId);
+    if (r === true) {
       this.userService.deleteUser(userId).subscribe(data => {
         console.log(data);
         alert('Xoa user thanh cong');
         this.router.navigate(['/admin/shop-management/user-management']);
       }, error => {
         alert(error.error.detail);
-      })
+      });
     }
   }
 
