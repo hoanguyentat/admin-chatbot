@@ -3,7 +3,7 @@
         <mat-card style="margin-bottom: 1em;">
             <mat-card-title>
                 <span>Order list</span>
-                <button mat-raised-button color="primary" class="pull-right" (click)="addOrder()">Thêm mới</button>
+                <button mat-raised-button color="primary" class="pull-right" (click)="addOrder()">ADD NEW</button>
             </mat-card-title>
             <mat-card-content>
                 <app-order-list (selectOrder)="selectedOrder = $event"></app-order-list>
@@ -18,7 +18,7 @@
                 
             </mat-card-content>
             <mat-card-actions>
-                <button mat-raised-button color="primary">Edit</button>
+                <button mat-raised-button color="primary" (click)="editOrder()">EDIT</button>
                 <button mat-raised-button (click)="selectedOrder = null">CLOSE</button>
             </mat-card-actions>
         </mat-card>

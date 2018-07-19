@@ -7,8 +7,9 @@ import { OrderOverviewComponent } from './order-overview/order-overview.componen
 import { OrderFormComponent } from './order-form/order-form.component';
 
 const routes: Routes = [
-  {path: '', component: OrderManagementComponent},
-  // {path: ':id', component: OrderDetailComponent},
+  { path: '', component: OrderManagementComponent },
+  { path: 'add', component: OrderFormComponent },
+  { path: 'edit/:id', component: OrderFormComponent }
 ];
 
 @NgModule({

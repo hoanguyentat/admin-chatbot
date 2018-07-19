@@ -13,13 +13,15 @@ export class OrderManagementComponent {
     constructor(private orderService: OrderService, private router: Router) {}
 
     addOrder(): void {
-        console.log("add new order");
         this.router.navigate(['admin/shop-management/order-management/add']);
     }
 
-    editOrder(userId): void {
-        console.log("edit order");
-        this.router.navigate(['admin/shop-management/order-management/edit', userId]);
+    editOrder(): void {
+        if (this.selectedOrder) {
+            this.router.navigate(['admin/shop-management/order-management/edit', this.selectedOrder.id]);
+        } else {
+            console.log('No order is selected');
+        }
     }
 
 }
