@@ -9,7 +9,7 @@ import { Order } from '../../../../core/models/order';
   styleUrls: ['./order-form.component.scss']
 })
 export class OrderFormComponent implements OnInit {
-  private orderId: string;
+  orderId: string;
   order: Order;
 
   constructor(
@@ -19,6 +19,8 @@ export class OrderFormComponent implements OnInit {
     this.orderId = route.snapshot.params.id;
     if (this.orderId) {
       this.orderService.getOrder(this.orderId).subscribe(order => this.order = order);
+    } else {
+      this.order = <Order>{};
     }
 
   }
