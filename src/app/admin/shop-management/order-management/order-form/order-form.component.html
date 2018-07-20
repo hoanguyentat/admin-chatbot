@@ -52,7 +52,7 @@
                             <th mat-header-cell *matHeaderCellDef>Quantity</th>
                             <td mat-cell *matCellDef="let ele">
                                 <mat-form-field>
-                                    <input matInput type="number" min="0" [(ngModel)]="ele.quantity">
+                                    <input matInput type="number" min="0" [(ngModel)]="ele.quantity" (ngModelChange)="updateTotalProductAndTotalPrice()">
                                 </mat-form-field>
                             </td>
                             <td mat-footer-cell *matFooterCellDef> </td>
@@ -60,7 +60,7 @@
                         <ng-container matColumnDef='action'>
                             <th mat-header-cell *matHeaderCellDef></th>
                             <td mat-cell *matCellDef="let ele">
-                                <button mat-icon-button (click)="$event.stopPropagation(); deleteProduct(ele)">
+                                <button mat-icon-button (click)="$event.stopPropagation(); deleteProductInOrder(ele); updateTotalProductAndTotalPrice()">
                                     <i class="fa fa-times-circle fa-2x" aria-hidden="true"></i>
                                 </button>
                             </td>
@@ -71,12 +71,24 @@
                 </div>
             </mat-card-content>
             <mat-card-actions>
-                <button mat-raised-button color="primary">UPDATE</button>
-                <button mat-raised-button>GO BACK</button>
+                <button *ngIf="!orderId" mat-raised-button color="primary" (click)="addOrder()">ADD</button>
+                <button *ngIf="orderId" mat-raised-button color="primary"(click)="updateOrder()">UPDATE</button>
+                <button mat-raised-button (click)="goBack()">GO BACK</button>
             </mat-card-actions>
         </mat-card>
     </div>
     <div class="col-sm-12 col-md-5">
-        
+        <app-product-filter></app-product-filter>
+        <mat-card style="margin-top: 1em;">
+            <mat-card-title>
+                <span>Product list</span>
+                <div class="action pull-right">
+                    <button mat-raised-button color="primary" (click)="applyFilters();" style="margin-right: 1em;">APPLY FILTER</button>
+                </div>
+            </mat-card-title>
+            <mat-card-content>
+                <app-product-list (chooseProduct)="onChooseProduct($event)"></app-product-list>
+            </mat-card-content>
+        </mat-card>
     </div>
 </div>
