@@ -25,6 +25,8 @@ export class OrderListComponent implements OnInit {
 
   private reloadSubject = new Subject<any>();
 
+  selectedOrder: Order;
+
   constructor(private orderService: OrderService) { }
 
   ngOnInit() {
@@ -48,6 +50,7 @@ export class OrderListComponent implements OnInit {
   }
 
   public onSelectedRow(order: Order) {
+    this.selectedOrder = order;
     this.selectOrder.emit(order);
   }
 
