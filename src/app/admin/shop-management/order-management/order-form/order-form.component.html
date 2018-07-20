@@ -1,5 +1,5 @@
 <div class="row" style="padding:1em;">
-    <div class="col-md-8">
+    <div class="col-md-7">
         <mat-card>
             <mat-card-title>
                 <span *ngIf="orderId">Edit order {{orderId}}</span>
@@ -16,9 +16,64 @@
                     <input type="number" min="0" step="1" matInput placeholder="Total product" [(ngModel)]="order.total_product">
                 </mat-form-field>
                 <mat-form-field class="col-md-6">
-                    <input type="number" min="0" placeholder="Total price" [(ngModel)]="order.total_price">
+                    <input matInput type="number" min="0" placeholder="Total price" [(ngModel)]="order.total_price">
                 </mat-form-field>
+                <div>
+                    <table mat-table [dataSource]="order.products">
+                        <ng-container matColumnDef='description'>
+                            <th mat-header-cell *matHeaderCellDef>Description</th>
+                            <td mat-cell *matCellDef="let ele">
+                                <div class="name">
+                                    <b>{{ele.name}}</b>
+                                </div>
+                                <div class="brand">
+                                    <i>{{ele.brand || ''}}</i>
+                                </div>
+                            </td>
+                        </ng-container>
+                        <ng-container matColumnDef='count'>
+                            <th mat-header-cell *matHeaderCellDef>Count</th>
+                            <td mat-cell *matCellDef="let ele">{{ele.count}}</td>
+                        </ng-container>
+                        <ng-container matColumnDef='image'>
+                            <th mat-header-cell *matHeaderCellDef></th>
+                            <td mat-cell *matCellDef="let ele">
+                                <img src="https://images.nike.com/is/image/DotCom/PDP_HERO_ZOOM/158371C_410_A_PREM/converse-one-star-premium-suede-low-top-unisex-shoe.jpg"
+                                />
+                            </td>
+                        </ng-container>
+                        <ng-container matColumnDef='price'>
+                            <th mat-header-cell *matHeaderCellDef>Price</th>
+                            <td mat-cell *matCellDef="let ele">
+                                {{ele.price}} {{ele.price_unit}}
+                            </td>
+                        </ng-container>
+                        <ng-container matColumnDef='quantity'>
+                            <th mat-header-cell *matHeaderCellDef>Quantity</th>
+                            <td mat-cell *matCellDef="let ele">
+                                <mat-form-field>
+                                    <input matInput type="number" min="0" [(ngModel)]="ele.quantity">
+                                </mat-form-field>
+                            </td>
+                            <td mat-footer-cell *matFooterCellDef> </td>
+                        </ng-container>
+                        <ng-container matColumnDef='action'>
+                            <th mat-header-cell *matHeaderCellDef></th>
+                            <td mat-cell *matCellDef="let ele">
+                                <button mat-icon-button (click)="$event.stopPropagation(); deleteProduct(ele)">
+                                    <i class="fa fa-times-circle fa-2x" aria-hidden="true"></i>
+                                </button>
+                            </td>
+                        </ng-container>
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+                    </table>
+                </div>
             </mat-card-content>
+            <mat-card-actions>
+                <button mat-raised-button color="primary">UPDATE</button>
+                <button mat-raised-button>GO BACK</button>
+            </mat-card-actions>
         </mat-card>
     </div>
 </div>

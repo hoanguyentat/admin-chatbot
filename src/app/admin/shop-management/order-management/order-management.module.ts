@@ -5,6 +5,7 @@ import { SharedModule } from '../../../shared/shared.module';
 import { Routes, RouterModule } from '@angular/router';
 import { OrderOverviewComponent } from './order-overview/order-overview.component';
 import { OrderFormComponent } from './order-form/order-form.component';
+import { ProductListComponent } from './order-form/product-list/product-list.component';
 
 const routes: Routes = [
   { path: '', component: OrderManagementComponent },
@@ -17,6 +18,6 @@ const routes: Routes = [
     SharedModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [OrderListComponent, OrderManagementComponent, OrderOverviewComponent, OrderFormComponent]
+  declarations: [OrderListComponent, OrderManagementComponent, OrderOverviewComponent, OrderFormComponent, ProductListComponent]
 })
 export class OrderManagementModule { }
