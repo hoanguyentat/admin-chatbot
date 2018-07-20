@@ -24,40 +24,44 @@ export class ProductManagementComponent {
   private openForm = false;
   constructor(private productService: ProductService) { }
 
-  private createProduct() {
-    console.log('create product');
-    console.log(this.productFormComponet.product);
-    this.productService.createProduct(this.productFormComponet.product).pipe(
-      tap(_ => {
-        this.openForm = false;
-        this.selectedProduct = null;
-        this.productListComponent.reload();
-      }),
-      catchError((err) => {
-        console.log(err);
-        return of({});
-      })
-    ).subscribe(data => { });
+  createProduct() {
+    // console.log('create product');
+    // console.log(this.productFormComponet.product);
+    if (confirm('Are you want to create new product?')) {
+      this.productService.createProduct(this.productFormComponet.product).pipe(
+        tap(_ => {
+          this.openForm = false;
+          this.selectedProduct = null;
+          this.productListComponent.reload();
+        }),
+        catchError((err) => {
+          console.log(err);
+          return of({});
+        })
+      ).subscribe(data => { });
+    }
   }
 
-  private clearSelectedProduct() {
+  clearSelectedProduct() {
     this.selectedProduct = null;
     this.productListComponent.selectedProduct = null;
   }
 
-  private editProduct() {
-    this.productService.updateProduct(this.selectedProduct).pipe(
-      tap(_ => {
-        this.openForm = false;
-        this.selectedProduct = null;
-        this.productListComponent.reload();
-      }),
-      catchError(err => {
-        console.log('error');
-        console.log(err);
-        return of({});
-      })
-    ).subscribe(data => { });
+  editProduct() {
+    if (confirm('Are you want to update this product?')) {
+      this.productService.updateProduct(this.selectedProduct).pipe(
+        tap(_ => {
+          this.openForm = false;
+          this.selectedProduct = null;
+          this.productListComponent.reload();
+        }),
+        catchError(err => {
+          console.log('error');
+          console.log(err);
+          return of({});
+        })
+      ).subscribe(data => { });
+    }
   }
 
   public applyFilters() {
