@@ -59,4 +59,14 @@ export class OrderService {
       })
     );
   }
+  public deleteOrder(order_id: number | string) {
+    const _url = this.getUrl(order_id);
+    return this.http.delete(_url).pipe(
+      tap(_ => this.message.info('Delete order successfully!')),
+      catchError(err => {
+        this.message.error('Delete order fail!');
+        throw err;
+      })
+    );
+  }
 }

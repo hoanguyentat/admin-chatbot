@@ -58,7 +58,7 @@ export class ProductListComponent implements OnInit {
     this.reload();
   }
 
-  delete(product: Product) {
+  deleteProduct(product: Product) {
     if (confirm('Are you want to delete this product?')) {
       this.productService.deleteProduct(product.id).subscribe(data => {
         this.reload();
