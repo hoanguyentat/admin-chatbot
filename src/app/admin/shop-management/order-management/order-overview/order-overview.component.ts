@@ -11,7 +11,7 @@ export class OrderOverviewComponent {
   @Input()
   public orderDetail: OrderDetail;
 
-  displayedColumns = ['image', 'description', 'attributes', 'count', 'price'];
+  displayedColumns = ['image', 'description', 'price', 'quantity'];
 
   constructor() {
   }
