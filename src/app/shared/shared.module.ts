@@ -25,6 +25,7 @@ import {
 } from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
 import { AutocompleteComponent } from './components/autocomplete/autocomplete.component';
+import { ProductFilterComponent } from './components/product-filter/product-filter.component';
 
 const BASE_MODULES = [
   CommonModule,
@@ -52,7 +53,8 @@ const MAT_MODULES = [
 ];
 
 const COMPONENT = [
-  AutocompleteComponent
+  AutocompleteComponent,
+  ProductFilterComponent
 ];
 
 @NgModule({
