@@ -52,6 +52,7 @@ export class AutocompleteComponent implements OnInit, OnChanges {
   }
 
   private _filter(value: string): string[] {
+    value = value || '';
     const filterValue = value.toLowerCase();
     return this.options.filter(option => option.toLowerCase().startsWith(filterValue));
   }
