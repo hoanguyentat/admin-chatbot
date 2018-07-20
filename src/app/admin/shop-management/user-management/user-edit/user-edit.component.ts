@@ -13,26 +13,26 @@ export class UserEditComponent implements OnInit {
   submitted = false;
 
   constructor(private router: Router, private route: ActivatedRoute, private userService: UserService) {
-    let userId = this.route.snapshot.params['id']
-    console.log(userId)
+    const userId = this.route.snapshot.params['id'];
+    console.log(userId);
     this.userService.getUser(userId).subscribe(data => {
       this.user = data;
-      console.log(data)
+      console.log(data);
     }, error => {
       console.log(error);
-    })
+    });
   }
 
   onSubmit(): void {
-    console.log("updating userId + " + this.user.id)
+    console.log('updating userId + ' + this.user.id);
     console.log(this.user);
     this.userService.updatUser(this.user).subscribe(data => {
-      console.log("update user success...");
-      alert("Cap nhat user thanh cong");
+      console.log('update user success...');
+      alert('Cap nhat user thanh cong');
     }, error => {
-      console.log(error)
-      alert(error.error.detail)
-    })
+      console.log(error);
+      alert(error.error.detail);
+    });
   }
 
   ngOnInit() {

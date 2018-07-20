@@ -5,7 +5,7 @@ export interface OrderDetail {
     user_backend_id: string;
     customer_name: string;
     customer_address: string;
-    total_products: number;
+    total_product: number;
     total_price: number;
     price_unit: string;
     updated_at: number;

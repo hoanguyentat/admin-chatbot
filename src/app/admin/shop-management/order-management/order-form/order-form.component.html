@@ -1,0 +1,94 @@
+<div class="row" style="padding:1em;">
+    <div class="col-sm-12 col-md-7">
+        <mat-card>
+            <mat-card-title>
+                <span *ngIf="orderId">Edit order {{orderId}}</span>
+                <span *ngIf="!orderId">Add new order</span>
+            </mat-card-title>
+            <mat-card-content class="row">
+                <mat-form-field class="col-md-6">
+                    <input matInput placeholder="Customer name" [(ngModel)]="order.customer_name">
+                </mat-form-field>
+                <mat-form-field class="col-md-6">
+                    <textarea matInput placeholder="Customer address" [(ngModel)]="order.customer_address"></textarea>
+                </mat-form-field>
+                <mat-form-field class="col-md-6">
+                    <input type="number" min="0" step="1" matInput placeholder="Total product" [(ngModel)]="order.total_product">
+                </mat-form-field>
+                <mat-form-field class="col-md-6">
+                    <input matInput type="number" min="0" placeholder="Total price" [(ngModel)]="order.total_price">
+                </mat-form-field>
+                <div>
+                    <table mat-table [dataSource]="order.products">
+                        <ng-container matColumnDef='description'>
+                            <th mat-header-cell *matHeaderCellDef>Description</th>
+                            <td mat-cell *matCellDef="let ele">
+                                <div class="name">
+                                    <b>{{ele.name}}</b>
+                                </div>
+                                <div class="brand">
+                                    <i>{{ele.brand || ''}}</i>
+                                </div>
+                            </td>
+                        </ng-container>
+                        <ng-container matColumnDef='count'>
+                            <th mat-header-cell *matHeaderCellDef>Count</th>
+                            <td mat-cell *matCellDef="let ele">{{ele.count}}</td>
+                        </ng-container>
+                        <ng-container matColumnDef='image'>
+                            <th mat-header-cell *matHeaderCellDef></th>
+                            <td mat-cell *matCellDef="let ele">
+                                <img src="https://images.nike.com/is/image/DotCom/PDP_HERO_ZOOM/158371C_410_A_PREM/converse-one-star-premium-suede-low-top-unisex-shoe.jpg"
+                                />
+                            </td>
+                        </ng-container>
+                        <ng-container matColumnDef='price'>
+                            <th mat-header-cell *matHeaderCellDef>Price</th>
+                            <td mat-cell *matCellDef="let ele">
+                                {{ele.price}} {{ele.price_unit}}
+                            </td>
+                        </ng-container>
+                        <ng-container matColumnDef='quantity'>
+                            <th mat-header-cell *matHeaderCellDef>Quantity</th>
+                            <td mat-cell *matCellDef="let ele">
+                                <mat-form-field>
+                                    <input matInput type="number" min="0" [(ngModel)]="ele.quantity" (ngModelChange)="updateTotalProductAndTotalPrice()">
+                                </mat-form-field>
+                            </td>
+                            <td mat-footer-cell *matFooterCellDef> </td>
+                        </ng-container>
+                        <ng-container matColumnDef='action'>
+                            <th mat-header-cell *matHeaderCellDef></th>
+                            <td mat-cell *matCellDef="let ele">
+                                <button mat-icon-button (click)="$event.stopPropagation(); deleteProductInOrder(ele); updateTotalProductAndTotalPrice()">
+                                    <i class="fa fa-times-circle fa-2x" aria-hidden="true"></i>
+                                </button>
+                            </td>
+                        </ng-container>
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+                    </table>
+                </div>
+            </mat-card-content>
+            <mat-card-actions>
+                <button *ngIf="!orderId" mat-raised-button color="primary" (click)="addOrder()">ADD</button>
+                <button *ngIf="orderId" mat-raised-button color="primary"(click)="updateOrder()">UPDATE</button>
+                <button mat-raised-button (click)="goBack()">GO BACK</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+    <div class="col-sm-12 col-md-5">
+        <app-product-filter></app-product-filter>
+        <mat-card style="margin-top: 1em;">
+            <mat-card-title>
+                <span>Product list</span>
+                <div class="action pull-right">
+                    <button mat-raised-button color="primary" (click)="applyFilters();" style="margin-right: 1em;">APPLY FILTER</button>
+                </div>
+            </mat-card-title>
+            <mat-card-content>
+                <app-product-list (chooseProduct)="onChooseProduct($event)"></app-product-list>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

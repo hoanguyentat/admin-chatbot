@@ -5,7 +5,7 @@ import { tap, catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { ProductFormComponent } from './product-form/product-form.component';
 import { ProductListComponent } from './product-list/product-list.component';
-import { ProductFilterComponent } from './product-filter/product-filter.component';
+import { ProductFilterComponent } from '../../../shared/components/product-filter/product-filter.component';
 
 @Component({
   selector: 'app-product-management',

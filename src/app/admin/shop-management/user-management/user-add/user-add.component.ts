@@ -11,27 +11,27 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class UserAddComponent implements OnInit {
 
   private user: any = {};
-  
+
   submitted = false;
 
   onSubmit() {
     console.log(this.user);
-    if(this.user.password !== this.user.repass){
-      alert("Mật khẩu không khớp!")
+    if (this.user.password !== this.user.repass) {
+      alert('Mật khẩu không khớp!');
     } else {
       this.userService.createUser(this.user).subscribe(result => {
         console.log(result);
         alert('Thêm user thành công');
         this.router.navigate(['/admin/shop-management/user-management']);
       }, err => {
-        console.log(err)
+        console.log(err);
         alert(String(err.error.username));
       });
     }
   }
 
   newHero() {
-    
+
   }
 
 

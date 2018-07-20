@@ -9,9 +9,7 @@
       </mat-panel-description>
     </mat-expansion-panel-header>
     <div class="row">
-      <mat-form-field class="col">
-        <input matInput [(ngModel)]="brand" placeholder="Brand">
-      </mat-form-field>
+      <app-autocomplete class="col" label="Brand" [(model)]="brand" [options]="['Nike', 'Thuong Dinh', 'Addias']"></app-autocomplete>
       <mat-form-field class="col">
         <input matInput [(ngModel)]="price" type="number" placeholder="Price">
       </mat-form-field>
@@ -21,9 +19,7 @@
       <mat-form-field class="col">
         <input matInput [(ngModel)]="color" placeholder="Color">
       </mat-form-field>
-      <mat-form-field class="col">
-          <input matInput [(ngModel)]="size" placeholder="Size">
-      </mat-form-field>
+      <app-autocomplete class="col" label="Size" [(model)]="size" [options]="['S', 'M', 'L', 'XL']"></app-autocomplete>
     </div>
   </mat-expansion-panel>
 </mat-accordion>
