@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/cor
 import { MatPaginator } from '@angular/material';
 import { switchMap, map, catchError, startWith, tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
-import { User } from '../../../../core/models/User';
+import { User } from '../../../../core/models/user';
 import { UserService } from '../../../../core/services/user.service';
 import { Router } from '@angular/router';
 

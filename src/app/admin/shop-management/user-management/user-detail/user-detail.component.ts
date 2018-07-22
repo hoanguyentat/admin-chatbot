@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
-import { UserDetail } from '../../../../core/models/UserDetail';
+import { User } from '../../../../core/models/User';
 
 
 @Component({
@@ -10,7 +10,7 @@ import { UserDetail } from '../../../../core/models/UserDetail';
 export class UserDetailComponent implements OnChanges {
 
   @Input()
-  public userDetail: UserDetail;
+  public userDetail: User;
   constructor() { }
 
   ngOnChanges() {

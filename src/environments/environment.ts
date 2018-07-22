@@ -7,5 +7,5 @@ export const environment = {
   production: false,
   apiBase: '',
   domain: 'https://admin.botdy.vn/api/dev/be-shop-services',
-  token: '2c972a5bd9546de19d380270fca2eee494318894'
+  token: '61e882210219a71666b7c193f94d3f92c42c5d61'
 };

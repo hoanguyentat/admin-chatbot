@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { User } from '../models/User';
+import { User } from '../models/user';
 import { Observable, of } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
@@ -16,13 +16,13 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   public createUser(user): Observable<any> {
-    let data = {
-      "username": user.username,
-      "full_name": user.username,
-      "sex": user.sex,
-      "phone": user.phone,
-      "password": user.password
-    }
+    const data = {
+      'username': user.username,
+      'full_name': user.username,
+      'sex': user.sex,
+      'phone': user.phone,
+      'password': user.password
+    };
     return this.http.post(this.baseUserAdd, data);
   }
 

@@ -1,4 +1,4 @@
-import { SharedService } from './../../shared/shared.service';
+import { SharedService } from '../../shared/shared.service';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
