@@ -2,20 +2,24 @@
     <div class="col">
         <mat-card>
             <mat-card-title>
-                <span>Danh sách khách hàng</span>
-                <button mat-raised-button color="primary" class="pull-right" (click)= "addUser()">Thêm mới</button>
+                <span>User list</span>
+                <button mat-raised-button color="primary" class="pull-right" (click)= "addUser()">ADD NEW</button>
             </mat-card-title>
             <mat-card-content>
                 <app-user-list (selectUser)="selectedUser = $event"></app-user-list>
             </mat-card-content>
         </mat-card>
     </div>
-    <div class=" col-xs-12 col-lg-5 col-md-12 col-sm-12" *ngIf="selectedUser">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-5" *ngIf="selectedUser">
         <mat-card>
-            <mat-card-title><span>Chi tiết khách hàng</span><button mat-raised-button color="primary" class="pull-right" (click)= "editUser(selectedUser.id)">Chỉnh sửa</button></mat-card-title>
+            <mat-card-title>User editor</mat-card-title>
             <mat-card-content>
-                <app-user-detail [userDetail]="selectedUser"></app-user-detail>
+                <app-user-editor [user]="selectedUser"></app-user-editor>
             </mat-card-content>
+            <mat-card-actions>
+                <button mat-raised-button color="primary" (click)="editUser()">EDIT</button>
+                <button mat-raised-button (click)="selectedUser == null">CLOSE</button>
+              </mat-card-actions>
         </mat-card>
     </div>
 </div>
