@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserService } from '../../../../core/services/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Location } from '@angular/common';
+import { NewUser } from '../../../../core/models/new-user';
 
 
 @Component({
@@ -8,36 +10,64 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './user-add.component.html',
   styleUrls: ['./user-add.component.scss']
 })
-export class UserAddComponent implements OnInit {
+export class UserAddComponent {
 
-  private user: any = {};
+  username: string;
+  full_name: string;
+  sex: string;
+  email: string;
+  phone: string;
+  birth_day: Date;
+  password: string;
+  confirmPassword: string;
 
-  submitted = false;
+  err: any;
 
-  onSubmit() {
-    console.log(this.user);
-    if (this.user.password !== this.user.repass) {
-      alert('Mật khẩu không khớp!');
-    } else {
-      this.userService.createUser(this.user).subscribe(result => {
-        console.log(result);
-        alert('Thêm user thành công');
-        this.router.navigate(['/admin/shop-management/user-management']);
-      }, err => {
-        console.log(err);
-        alert(String(err.error.username));
-      });
+  constructor(
+    private userService: UserService,
+    private location: Location,
+  ) { }
+
+  private verify() {
+    if (!this.username || this.username.trim() === '') {
+      throw new Error('User name is required!');
+    }
+    if (!this.password || this.password.trim() === '') {
+      throw new Error('Password does not blank');
+    }
+    if (this.confirmPassword !== this.password) {
+      throw new Error('Confirm password does not match!');
     }
   }
 
-  newHero() {
+  addUser() {
+    try {
+      this.verify();
+    } catch (err) {
+      alert(err);
+      return;
+    }
 
+    console.log(this.birth_day);
+
+    this.userService.createUser({
+      username: this.username,
+      full_name: this.full_name,
+      sex: this.sex,
+      email: this.email,
+      phone: this.phone,
+      birth_day: this.birth_day ? `${this.birth_day.getFullYear()}-${this.birth_day.getMonth() + 1}-${this.birth_day.getDay()}` : null,
+      password: this.password
+    }).subscribe(data => {
+      this.goBack();
+    }, (res) => {
+      this.err = res.error;
+      console.log(this.err);
+    });
   }
 
-
-  constructor(private userService: UserService, private route: ActivatedRoute, private router: Router) { }
-
-  ngOnInit() {
+  goBack() {
+    this.location.back();
   }
 
 }

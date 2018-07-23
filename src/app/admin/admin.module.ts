@@ -1,5 +1,5 @@
 import { AdminService } from './services/admin.service';
-import { SharedModule } from './../shared/shared.module';
+import { SharedModule } from '../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
