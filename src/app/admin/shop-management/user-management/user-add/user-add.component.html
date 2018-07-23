@@ -4,25 +4,22 @@
       <mat-card-title>Add new user</mat-card-title>
       <mat-card-content>
         <mat-form-field class="full-width">
-          <input matInput placeholder="Username" [(ngModel)]="user.username" required>
+          <input matInput placeholder="User name" [(ngModel)]="username" required>
         </mat-form-field>
         <mat-form-field class="full-width">
-          <input matInput placeholder="Full name" [(ngModel)]="user.full_name">
+          <input matInput placeholder="Full name" [(ngModel)]="full_name">
         </mat-form-field>
         <mat-form-field class="full-width">
-          <input matInput placeholder="Sex" [(ngModel)]="user.sex">
+          <input matInput placeholder="Sex" [(ngModel)]="sex">
         </mat-form-field>
         <mat-form-field class="full-width">
-          <input matInput placeholder="Email" [(ngModel)]="user.email" type="email">
+          <input matInput placeholder="Email" [(ngModel)]="email" type="email">
         </mat-form-field>
         <mat-form-field class="full-width">
-          <input matInput placeholder="Phone" [(ngModel)]="user.phone">
+          <input matInput placeholder="Phone" [(ngModel)]="phone">
         </mat-form-field>
         <mat-form-field class="full-width">
-          <input matInput placeholder="Birth day" [(ngModel)]="user.birth_day" type="date">
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="user.birth_day">
+          <input matInput [matDatepicker]="picker" placeholder="Choose birth day" [(ngModel)]="birth_day">
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
@@ -30,9 +27,16 @@
           <input matInput placeholder="Password" [(ngModel)]="password" type="password" required>
         </mat-form-field>
         <mat-form-field class="full-width">
-          <input matInput placeholder="Comfirm password" [(ngModel)]="password" type="password" required>
+          <input matInput placeholder="Comfirm password" [(ngModel)]="confirmPassword" type="password" required>
+          <!-- <mat-error *ngIf="confirmPassword !== password" >
+            Confirm password does not match!
+          </mat-error> -->
         </mat-form-field>
+        <mat-card-actions>
+          <button mat-raised-button color="primary" (click)="addUser()">ADD USER</button>
+          <button mat-raised-button (click)="goBack()">GO BACK</button>
+        </mat-card-actions>
       </mat-card-content>
     </mat-card>
-  </div> 
+  </div>
 </div>

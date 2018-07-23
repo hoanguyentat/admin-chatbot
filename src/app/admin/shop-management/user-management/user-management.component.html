@@ -3,7 +3,7 @@
         <mat-card>
             <mat-card-title>
                 <span>User list</span>
-                <button mat-raised-button color="primary" class="pull-right" (click)= "addUser()">ADD NEW</button>
+                <button mat-raised-button color="primary" class="pull-right" (click)="addUser()">ADD NEW</button>
             </mat-card-title>
             <mat-card-content>
                 <app-user-list (selectUser)="selectedUser = $event"></app-user-list>
@@ -18,8 +18,8 @@
             </mat-card-content>
             <mat-card-actions>
                 <button mat-raised-button color="primary" (click)="editUser()">EDIT</button>
-                <button mat-raised-button (click)="selectedUser == null">CLOSE</button>
-              </mat-card-actions>
+                <button mat-raised-button (click)="clearSelectedUser()">CLOSE</button>
+            </mat-card-actions>
         </mat-card>
     </div>
 </div>

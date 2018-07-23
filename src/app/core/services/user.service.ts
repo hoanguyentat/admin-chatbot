@@ -21,17 +21,10 @@ export class UserService {
   ) { }
 
   public createUser(user): Observable<any> {
-    const data = {
-      'username': user.username,
-      'full_name': user.username,
-      'sex': user.sex,
-      'phone': user.phone,
-      'password': user.password
-    };
-    return this.http.post(this.baseUserAdd, data).pipe(
+    return this.http.post(this.baseUserAdd, JSON.stringify(user)).pipe(
       tap(_ => this.message.info('Create user successfully!')),
       catchError(err => {
-        this.message.error('Create user failed: '  + err.error.detail);
+        this.message.error('Create user failed: ' + err.error.detail);
         throw err;
       })
     );

@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
 import { MatPaginator } from '@angular/material';
 import { switchMap, map, catchError, startWith, tap } from 'rxjs/operators';
-import { Observable, of } from 'rxjs';
+import { Observable, of, Subject, merge } from 'rxjs';
 import { User } from '../../../../core/models/user';
 import { UserService } from '../../../../core/services/user.service';
 import { Router } from '@angular/router';
@@ -15,19 +15,22 @@ import { Router } from '@angular/router';
 export class UserListComponent implements OnInit {
 
   @ViewChild(MatPaginator)
-  public paginator: MatPaginator;
-  public data: User[] = [];
-  public displayedColumns: string[]
+  paginator: MatPaginator;
+  data: User[] = [];
+  displayedColumns: string[]
     = ['username', 'full_name', 'sex', 'email', 'phone', 'birth_day', 'role', 'action'];
+  selectedUser: User;
 
   @Output()
   public selectUser = new EventEmitter<User>();
+
+  private reloadSubject = new Subject();
 
   constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
     this.paginator.pageIndex = 0;
-    this.paginator.page.pipe(
+    merge(this.paginator.page, this.reloadSubject).pipe(
       startWith({}),
       switchMap(() => {
         return this.userService.getUsers(this.paginator.pageIndex + 1, this.paginator.pageSize);
@@ -46,15 +49,21 @@ export class UserListComponent implements OnInit {
   }
 
   public onSelectedRow(user: User) {
-    this.selectUser.emit(user);
+    this.selectedUser = user;
+    this.selectUser.emit(JSON.parse(JSON.stringify(user)));
   }
 
   deleteUser(user: User): void {
     const r = confirm('Are you want to delete user: ' + user.username);
     if (r === true) {
       this.userService.deleteUser(user.id).subscribe(data => {
+        this.reload();
       });
     }
+  }
+
+  public reload() {
+    this.reloadSubject.next();
   }
 
 }
