@@ -79,15 +79,19 @@ export class OrderFormComponent implements OnInit {
   }
 
   addOrder() {
-    this.orderService.createOrder(this.order).pipe(
-      tap(_ => this.goBack()),
-    ).subscribe(data => { });
+    if (confirm('Are you want to create new order?')) {
+      this.orderService.createOrder(this.order).pipe(
+        tap(_ => this.goBack()),
+      ).subscribe(data => { });
+    }
   }
 
   updateOrder() {
-    this.orderService.updateOrder(this.order).pipe(
-      tap(_ => this.goBack()),
-    ).subscribe(data => { });
+    if (confirm('Are you want to update this order?')) {
+      this.orderService.updateOrder(this.order).pipe(
+        tap(_ => this.goBack()),
+      ).subscribe(data => { });
+    }
   }
 
   goBack() {

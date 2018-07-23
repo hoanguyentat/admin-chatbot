@@ -58,10 +58,12 @@ export class ProductListComponent implements OnInit {
     this.reload();
   }
 
-  private delete(product: Product) {
-    this.productService.deleteProduct(product.id).subscribe(data => {
-      this.reload();
-    });
-    console.log(this.selectedProduct.id);
+  deleteProduct(product: Product) {
+    if (confirm('Are you want to delete this product?')) {
+      this.productService.deleteProduct(product.id).subscribe(data => {
+        this.reload();
+      });
+    }
+    // console.log(this.selectedProduct.id);
   }
 }
