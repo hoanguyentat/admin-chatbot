@@ -48,7 +48,7 @@ export class UserAddComponent {
       return;
     }
 
-    console.log(this.birth_day);
+    // console.log(this.birth_day);
 
     this.userService.createUser({
       username: this.username,

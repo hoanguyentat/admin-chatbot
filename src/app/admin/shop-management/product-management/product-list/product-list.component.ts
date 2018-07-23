@@ -32,7 +32,7 @@ export class ProductListComponent implements OnInit {
         return this.productService.getProducts(this.paginator.pageIndex + 1, this.paginator.pageSize, this.filters);
       }),
       map(resp => {
-        console.log(resp);
+        // console.log(resp);
         this.paginator.pageIndex = resp.paging.page - 1;
         this.paginator.pageSize = resp.paging.page_size;
         this.paginator.length = resp.paging.total;

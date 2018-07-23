@@ -24,7 +24,14 @@ export class UserService {
     return this.http.post(this.baseUserAdd, JSON.stringify(user)).pipe(
       tap(_ => this.message.info('Create user successfully!')),
       catchError(err => {
-        this.message.error('Create user failed: ' + err.error.detail);
+        console.log(err)
+        if ("birth_day" in err.error) {
+          this.message.error(err.error.birth_day[0]);
+        } else if ("email" in err.error) {
+          this.message.error(err.error.email[0]);
+        } else if ("sex" in err.error) {
+          this.message.error(err.error.sex[0]);
+        } 
         throw err;
       })
     );

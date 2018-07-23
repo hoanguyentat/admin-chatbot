@@ -35,7 +35,7 @@ export class AutocompleteComponent implements OnInit, OnChanges {
       .pipe(
         startWith(this.model || ''),
         tap(value => {
-          console.log(value);
+          // console.log(value);
           this.modelChange.emit(value);
           this.myControl.setValue(value, {
             emitEvent: false,
