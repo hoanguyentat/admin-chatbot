@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserService } from '../../../../core/services/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Location } from '@angular/common';
+import { NewUser } from '../../../../core/models/new-user';
 
 
 @Component({
@@ -8,36 +10,22 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './user-add.component.html',
   styleUrls: ['./user-add.component.scss']
 })
-export class UserAddComponent implements OnInit {
+export class UserAddComponent {
 
-  private user: any = {};
+  user: NewUser = <NewUser>{};
+  password: string;
+  confirmPassword: string;
 
-  submitted = false;
+  constructor(
+    private userService: UserService,
+    private location: Location,
+  ) { }
 
-  onSubmit() {
-    console.log(this.user);
-    if (this.user.password !== this.user.repass) {
-      alert('Mật khẩu không khớp!');
-    } else {
-      this.userService.createUser(this.user).subscribe(result => {
-        console.log(result);
-        alert('Thêm user thành công');
-        this.router.navigate(['/admin/shop-management/user-management']);
-      }, err => {
-        console.log(err);
-        alert(String(err.error.username));
-      });
-    }
+  addUser() {
   }
 
-  newHero() {
-
-  }
-
-
-  constructor(private userService: UserService, private route: ActivatedRoute, private router: Router) { }
-
-  ngOnInit() {
+  goBack() {
+    this.location.back();
   }
 
 }

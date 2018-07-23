@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserService } from '../../../core/services/user.service';
 import { User } from '../../../core/models/user';
 import { Router } from '@angular/router';
+import { UserEditorComponent } from './user-editor/user-editor.component';
 
 @Component({
   selector: 'app-user-management',
@@ -9,16 +10,24 @@ import { Router } from '@angular/router';
 })
 export class UserManagementComponent implements OnInit {
 
+  @ViewChild(UserEditorComponent)
+  userEditorComponent: UserEditorComponent;
   public selectedUser: User;
 
-  constructor(private userService: UserService, private router: Router) {}
+  constructor(
+    private userService: UserService,
+    private router: Router
+  ) { }
 
   addUser(): void {
-    this.router.navigate(['admin/shop-management/user-management/add']);
   }
 
   editUser(userId): void {
-    this.router.navigate(['admin/shop-management/user-management/edit/', userId]);
+    if (confirm('Are you want to update this user?')) {
+      this.userService.updatUser(this.userEditorComponent.getUser()).subscribe(data => {
+        this.selectedUser = null;
+      });
+    }
   }
 
   ngOnInit() {

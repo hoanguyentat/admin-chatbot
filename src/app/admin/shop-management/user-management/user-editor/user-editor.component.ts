@@ -1,19 +1,21 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { User } from '../../../../core/models/User';
+import { User } from '../../../../core/models/user';
 
 @Component({
   selector: 'app-user-editor',
   templateUrl: './user-editor.component.html',
   styleUrls: ['./user-editor.component.scss']
 })
-export class UserEditorComponent implements OnInit {
+export class UserEditorComponent {
 
   @Input()
   user: User;
 
   constructor() { }
 
-  ngOnInit() {
+
+  public getUser(): User {
+    return this.user;
   }
 
 }

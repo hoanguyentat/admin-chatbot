@@ -49,15 +49,10 @@ export class UserListComponent implements OnInit {
     this.selectUser.emit(user);
   }
 
-  deleteUser(userId): void {
-    const r = confirm('Xoa user ' + userId);
+  deleteUser(user: User): void {
+    const r = confirm('Are you want to delete user: ' + user.username);
     if (r === true) {
-      this.userService.deleteUser(userId).subscribe(data => {
-        console.log(data);
-        alert('Xoa user thanh cong');
-        this.router.navigate(['/admin/shop-management/user-management']);
-      }, error => {
-        alert(error.error.detail);
+      this.userService.deleteUser(user.id).subscribe(data => {
       });
     }
   }

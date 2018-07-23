@@ -21,7 +21,9 @@ import {
   MatSelectModule,
   MatSnackBarModule,
   MatExpansionModule,
-  MatAutocompleteModule
+  MatAutocompleteModule,
+  MatDatepickerModule,
+  MatNativeDateModule
 } from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
 import { AutocompleteComponent } from './components/autocomplete/autocomplete.component';
@@ -49,7 +51,9 @@ const MAT_MODULES = [
   MatSelectModule,
   MatSnackBarModule,
   MatExpansionModule,
-  MatAutocompleteModule
+  MatAutocompleteModule,
+  MatDatepickerModule,
+  MatNativeDateModule
 ];
 
 const COMPONENT = [
