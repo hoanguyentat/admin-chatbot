@@ -30,6 +30,7 @@ export class UserManagementComponent {
     if (confirm('Are you want to update this user?')) {
       this.userService.updatUser(this.userEditorComponent.getUser()).subscribe(data => {
         this.selectedUser = null;
+        this.userListComponent.reload();
       });
     }
   }
